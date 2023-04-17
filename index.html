@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Zoológico LA MILAGROSA </title> 
+    <title> Zoológico la Milagrosa </title> 
     <link rel="shortcut icon" href = "img/icon.jpg" type= "image/x-icon">
     <link rel = "stylesheet" href = "CSS/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,10 +14,10 @@
 <body>
     <header>
         <nav>
-            <a href = "#"> Inicio </a>
-            <a href = "#"> Animales </a>
-            <a href = "#"> Horario y Precios </a>
-            <a href = "#"> Ubicacion </a>
+            <a href = "index.html"> Inicio </a>
+            <a href = "#animales"> Animales </a>
+            <a href = "#horarios"> Horario y Precios </a>
+            <a href = "#ubicacion"> Ubicacion </a>
         </nav>
         <section class = "textos-header">
             <h1> BIENVENIDOS AL ZOOLOGICO DE LA  MILAGROSA </h1>
@@ -69,7 +69,7 @@
         </section>
         
 
-        <section>
+        <section id="animales">
             <h2>Nuestros animales</h2>
             <ul>
                 <li><a href="#">Leones</a></li>
@@ -80,12 +80,12 @@
                 <li><a href="#">Cocodrilos</a></li>
             </ul>
         </section>
-        <section>
+        <section id="horarios">
             <h2>Horarios y precios</h2>
             <p>Horario de atención: De lunes a domingo de 9:00am a 5:00pm</p>
             <p>Precio de entrada: $10.00 adultos, $5.00 niños</p>
         </section>
-        <section>
+        <section id="ubicacion">
             <h2>Ubicación</h2>
             <p>Estamos ubicados en la siguiente dirección:</p>
             <address>
@@ -94,6 +94,28 @@
             </address>
         </section>
     </main>
+    <button id="btn-subir"><i class="fa-solid fa-angle-up" style="color: #ffffff;"></i></button>
+    <script>
+        document.getElementById("btn-subir").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+        window.addEventListener("scroll", function () {
+                // Código para verificar la posición del usuario
+            });
+        window.addEventListener("scroll", function () {
+                if (document.documentElement.scrollTop > 0) {
+                    // Mostrar el botón
+                    document.getElementById("btn-subir").style.display = "block";
+                } else {
+                    // Ocultar el botón
+                    document.getElementById("btn-subir").style.display = "none";
+                }
+            });
+    </script>
+    <script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
     <footer>
         <p>Zoológico © 2023 Todos los derechos reservados</p>
     </footer>

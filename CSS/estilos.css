@@ -24,8 +24,10 @@ header {
     font-weight: 300;
     text-decoration: none;
     margin-right: 10px;
+    transition: font-size 0.3s ease-in-out;
 }nav > a:hover {
-    text-decoration: underline;
+    font-size: 20px;
+    color: black;
 }.wave{
     position: absolute;
     bottom: 0;
@@ -122,4 +124,24 @@ section h2 {
 } .servicio-ind p{
     font-weight: 300;
     text-align: center;
+}
+#btn-subir {
+    background-color: #333;
+    /* color de fondo */
+    color: white;
+    /* color del texto */
+    position: fixed;
+    /* posición fija */
+    bottom: 20px;
+    /* distancia desde la parte inferior */
+    right: 20px;
+    /* distancia desde la parte derecha */
+    border: none;
+    /* borde sin estilo */
+    border-radius: 50%;
+    /* borde redondeado */
+    cursor: pointer;
+    /* cursor de tipo puntero */
+    padding: 15px;
+    /* tamaño del botón */
 }
