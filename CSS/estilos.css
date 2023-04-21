@@ -27,7 +27,7 @@ header {
     transition: font-size 0.3s ease-in-out;
 }nav > a:hover {
     font-size: 20px;
-    color: black;
+    color: #1b492e;
 }.wave{
     position: absolute;
     bottom: 0;
@@ -94,7 +94,7 @@ main {
     margin-top: 0;
     font-style: normal;
 } footer {
-    background-color: #333;
+    background-color: #1b492e;
     color: white;
     padding: 20px;
     position: relative;
@@ -106,7 +106,7 @@ main {
     padding: 6px;
     bottom: 12px;
     border: none;
-    background-color: #333;
+    background-color: #1b492e;
 }
 .tamanio{
     font-size: 23px;
@@ -139,7 +139,7 @@ section h2 {
     text-align: center;
 }
 #btn-subir {
-    background-color: #333;
+    background-color: #1b492e;
     /* color de fondo */
     color: white;
     /* color del texto */
