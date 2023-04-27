@@ -1,3 +1,26 @@
+<?php
+    include_once 'conexion.php';
+
+session_start();
+
+if (isset($_POST['nombre']) && isset($_POST['contrasena'])) {
+  $usuario = mysqli_real_escape_string($conn, $_POST['nombre']);
+  $contrasena = mysqli_real_escape_string($conn, $_POST['contrasenia']);
+
+  $query = "SELECT * FROM zoologico WHERE empleados='$nombre' AND contrasenia='$contrasena'";
+  $resultado = mysqli_query($conn, $query);
+
+  if (mysqli_num_rows($resultado) == 1) {
+    $fila = mysqli_fetch_assoc($resultado);
+    $_SESSION['nombre'] = $fila['nombre'];
+    $_SESSION['id tipo empleado'] = $fila['id tipo empleado'];
+    header('Location: inicio.html');
+  } else {
+    $error = "Nombre de usuario o contraseña incorrectos";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,10 +40,10 @@
         <h1>Iniciar sesión</h1>
         <form>
             <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="nombre" required>
     
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="contrasenia" required>
     
             <label for="usertype">Tipo de usuario:</label>
             <select id="usertype" name="usertype">
