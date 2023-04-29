@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    height: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 10px;
+    background-color: #1b492e;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.menu ul li {
+    margin: 0 10px;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+/** estilos para los productos**/
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.tarjeta img {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.tarjeta h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tarjeta .precio {
+    color: #f00;
+    font-size: 24px;
+}

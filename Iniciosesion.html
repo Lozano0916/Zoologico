@@ -1,27 +1,3 @@
-<?php
-
-    session_start();
-    require_once 'includes/conexion.php';
-  if (isset($_POST['nombre']) && isset($_POST['contraseña'])) {
-    $nombre = $_POST['nombre'];
-    $contraseña = $_POST['contraseña'];
-
-    $consulta = "SELECT * FROM empleados WHERE nombre='$nombre' AND contraseña='$contraseña'";
-    $resultado = mysqli_query($conn, $consulta);
-
-    if (mysqli_num_rows($resultado) == 1) {
-      $fila = mysqli_fetch_assoc($resultado);
-      $_SESSION['id_tipo_empleado'] = $fila['id_tipo_empleado'];
-
-      if ($_SESSION['id_tipo_empleado'] == 1) {
-        header('Location: admin.php');
-      }else {
-        echo 'Usuario o contraseña incorrectos';
-      }
-
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,13 +19,16 @@
         <?php if(!empty($message)) : ?>
             <p><?= $message ?></p>
         <?php endif; ?>
-        <form method="POST" action="#">
-            <label for="username">Nombre de usuario:</label>
+        <form action="procesar_login.php" method="post">
+            <label for="username">Nombre de nombre:</label>
             <input type="text" id="username" name="nombre" required>
     
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="contraseña" required>
-            </select>
+            <select id="tipo_nombre" name="id_tipo_empleado">
+			      <option value="administrador">Administrador</option>
+			      <option value="empleado">Empleado</option>
+        </select>
     
             <button type="submit">Iniciar sesión</button>
         </form>

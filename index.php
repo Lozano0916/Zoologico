@@ -19,6 +19,7 @@
             <a href = "#animales"> Animales </a>
             <a href = "#horarios"> Horario y Precios </a>
             <a href = "#ubicacion"> Ubicacion </a>
+            <a href = "tienda.php"> Tienda </a>
         </nav>
         <section class = "textos-header">
             <h1> BIENVENIDOS AL ZOOLOGICO DE LA  MILAGROSA </h1>
@@ -120,7 +121,7 @@
     <script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
     <footer>
         <p>Zoológico © 2023 Todos los derechos reservados</p>
-        <a href="Iniciosesion.php"><button class="btn-data"><i class="fa-solid fa-database tamanio" style="color: #ffffff;"></i></button></a>
+        <a href="Iniciosesion.html"><button class="btn-data"><i class="fa-solid fa-database tamanio" style="color: #ffffff;"></i></button></a>
     </footer>
 </body>
 
