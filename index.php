@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Zoológico la Milagrosa </title> 
+    <title> Zoological Gardens</title> 
     <link rel="shortcut icon" href = "img/icon.jpg" type= "image/x-icon">
     <link rel = "stylesheet" href = "CSS/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
             <a href = "tienda.php"> Tienda </a>
         </nav>
         <section class = "textos-header">
-            <h1> BIENVENIDOS AL ZOOLOGICO DE LA  MILAGROSA </h1>
+            <h1> BIENVENIDOS A ZOOLOGICAL GARDENS </h1>
         </section>
         <div class = "wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.99 C150.00,150.00 349.20,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
     </header>
@@ -43,7 +43,7 @@
 
     <main>
         <section class = "textos-header">
-            <h2>Bienvenidos al zoológico de la Milagrosa</h2>
+            <h2>Bienvenidos a Zoological Gardens</h2>
             <p>El zoológico es un lugar donde podrás observar diferentes especies de animales en su hábitat natural.</p>
             <p>Visítanos y descubre más sobre la fauna mundial.</p>
         </section>

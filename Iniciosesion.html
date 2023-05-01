@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/iniciosesion.css">
-    <link rel="icon" href="img/frailecillo.png"" type="image/x-icon">
+    <link rel="icon" href="img/frailecillo.png"" type=" image/x-icon">
 
     <title>Inicio sesion</title>
-    
+
 </head>
+
 <body>
     <a href="index.php"><button class="btn-volver"><i class="fa-solid fa-arrow-left"></i></button></a>
-    <center><h1 style="color: #1b492e;">BIENVENIDO</h1></center>
+    <center>
+        <h1 style="color: #1b492e;">BIENVENIDO</h1>
+    </center>
     <div class="container">
         <h1>Iniciar sesión</h1>
-
-        <?php if(!empty($message)) : ?>
-            <p><?= $message ?></p>
-        <?php endif; ?>
-        <form action="procesar_login.php" method="post">
+        <form action="procesar_login.php" method="POST">
             <label for="username">Nombre de nombre:</label>
             <input type="text" id="username" name="nombre" required>
-    
+
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="contraseña" required>
-            <select id="tipo_nombre" name="id_tipo_empleado">
-			      <option value="administrador">Administrador</option>
-			      <option value="empleado">Empleado</option>
-        </select>
-    
+
+            <select id="id_tipo_empleado" name="id_tipo_empleado">
+                <option value="Administrador">Administrador</option>
+                <option value="empleado">Empleado</option>
+            </select>
+
             <button type="submit">Iniciar sesión</button>
         </form>
     </div>
     <script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

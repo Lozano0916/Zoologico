@@ -6,7 +6,7 @@ $nombre = $_POST['nombre'];
 $contraseña = $_POST['contraseña'];
 $tipo_usuario = $_POST['id_tipo_empleado'];
 
-if ($tipo_usuario == 'administrador') {
+if ($tipo_usuario == 'Administrador') {
 	$sql = "SELECT * FROM empleados WHERE nombre='$nombre' AND contraseña='$contraseña'";
 	$resultado = $conn->query($sql);
 
@@ -24,7 +24,7 @@ if ($tipo_usuario == 'administrador') {
 	if ($resultado->num_rows > 0) {
 		$_SESSION['nombre'] = $usuarionombre;
 		$_SESSION['id_tipo_empleado'] = $tipo_usuario;
-		header("Location: dashboard_empleado.php");
+		header("Location: medic.php");
 	} else {
 		header("Location: index.php?error=1");
 	}
@@ -32,3 +32,4 @@ if ($tipo_usuario == 'administrador') {
 
 $conn->close();
 ?>
+
