@@ -8,32 +8,12 @@ header {
     background-color: #333;
     height: 100%;
 }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 10px;
-    background-color: #1b492e;
+nav.navbar{
+    background: #1b492e;
+    color: white;
 }
-
-.logo img {
-    height: 50px;
-}
-
-.menu ul {
-    display: flex;
-    list-style: none;
-}
-
-.menu ul li {
-    margin: 0 10px;
-}
-
-.menu ul li a {
-    color: #fff;
-    text-decoration: none;
+nav.navbar:hover{
+    color: #4CAF50;
 }
 /** estilos para los productos**/
 .contenedor {
@@ -70,6 +50,21 @@ nav {
 }
 
 .tarjeta .precio {
-    color: #f00;
+    color: black;
     font-size: 24px;
+}
+button.comprar {
+    background-color: #1b492e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    align-items: center;
+}
+button.comprar :hover{
+    background-color: #4CAF50;
 }
