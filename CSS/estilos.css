@@ -16,19 +16,25 @@ header {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-} nav {
+}
+nav {
     text-align: right;
     padding: 30px 50px 0 0;
-} nav > a{
+}
+
+nav>a {
     color: white;
     font-weight: 300;
     text-decoration: none;
     margin-right: 10px;
     transition: font-size 0.3s ease-in-out;
-}nav > a:hover {
+}
+
+nav>a:hover {
     font-size: 20px;
     color: #1b492e;
-}.wave{
+}
+.wave{
     position: absolute;
     bottom: 0;
     width: 100%;
