@@ -30,9 +30,9 @@
         <div class = "wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.99 C150.00,150.00 349.20,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
     </header>
     <main>
-        <section class = "contenedor sobre-nosotros" id="MISION">
+        <section class = "contenedor-sobre-nosotros" id="MISION">
             <div class = "contenedor-sobre-nosotros">
-                <img src="img/imgMision.jpg" alt="" class = "imagen-about-us">
+                <img src="images/imgMision.jpg" alt="" class = "imagen-about-us">
                 <div class = "contenido-textos">
                     <h3 class="titulo "> MISION </h3>
                     <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime ex natus eaque. Labore, accusamus voluptas! Quia saepe at dolores illum ipsum, magnam maxime voluptates earum culpa asperiores sapiente itaque eos!</p>
@@ -46,17 +46,17 @@
                 <h2 class = "titulo"> Nuestros animales </h2>
                 <div class = "servicio-cont">
                     <div class = "servicio-ind">
-                        <img src="img/leon.jpg" alt="">
+                        <img src="images/leon.jpg" alt="">
                         <h3> Leones </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
                     <div class = "servicio-ind">
-                        <img src="img/elefante.jpg" alt="">
+                        <img src="images/elefante.jpg" alt="">
                         <h3> Elefantes </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
                     <div class = "servicio-ind">
-                        <img src="img/panda.jpg" alt="">
+                        <img src="images/panda.jpg" alt="">
                         <h3> Pandas </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
@@ -64,35 +64,35 @@
                 <br/>
                 <div class = "servicio-cont">
                     <div class = "servicio-ind">
-                        <img src="img/jirafa.jpg" alt="">
+                        <img src="images/jirafa.jpg" alt="">
                         <h3> Jirafas </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
                     <div class = "servicio-ind">
-                        <img src="img/tigre.jpg" alt="">
+                        <img src="images/tigre.jpg" alt="">
                         <h3> Tigres </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
                     <div class = "servicio-ind">
-                        <img src="img/cocodrilo.jpg" alt="">
+                        <img src="images/cocodrilo.jpg" alt="">
                         <h3> Cocodrilos </h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sit repellat magni praesentium maiores natus, perspiciatis ea voluptatum similique eaque sint ratione minima deserunt itaque! Aspernatur atque quasi ducimus molestiae?</p>
                     </div>
                 </div>
             </div>
         </section>
-        <section class = "contenedor clientes" id="SERVICIOS"> 
+        <section class = "contenedor-clientes" id="SERVICIOS"> 
             <h2 class = "titulo"> Nuestros servicios </h2>
             <div class = "cards">
                 <div class = "card">
-                    <img src="img/img-serv-1.jpg" alt="">
+                    <img src="images/img-serv-1.jpg" alt="">
                     <div class = "contenido-texto-card">
                         <h4> Boletos </h4>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
                     </div>
                 </div>
                 <div class = "card">
-                    <img src="img/img-serv-2.jpg" alt="">
+                    <img src="images/img-serv-2.jpg" alt="">
                     <div class = "contenido-texto-card">
                         <h4> Visitas guiadas </h4>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
@@ -102,14 +102,14 @@
             <br/>
             <div class = "cards">
                 <div class = "card">
-                    <img src="img/img-serv-3.jpg" alt="">
+                    <img src="images/img-serv-3.jpg" alt="">
                     <div class = "contenido-texto-card">
                         <h4> Conservacion </h4>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
                     </div>
                 </div>
                 <div class = "card">
-                    <img src="img/img-serv-4.jpg" alt="">
+                    <img src="images/img-serv-4.jpg" alt="">
                     <div class = "contenido-texto-card">
                         <h4> Veterinaria </h4>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
@@ -138,49 +138,49 @@
                 <h2 class="titulo"> Galeria </h2>
                 <div class = "galeria-port">
                     <div class = "imagen-port">
-                        <img src="img/img1.jpg" alt="">
+                        <img src="images/img1.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img2.jpg" alt="">
+                        <img src="images/img2.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img3.jpg" alt="">
+                        <img src="images/img3.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img4.jpg" alt="">
+                        <img src="images/img4.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img5.jpg" alt="">
+                        <img src="images/img5.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img6.jpg" alt="">
+                        <img src="images/img6.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img7.jpg" alt="">
+                        <img src="images/img7.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>
                     </div>
                     <div class = "imagen-port">
-                        <img src="img/img8.jpg" alt="">
+                        <img src="images/img8.jpg" alt="">
                         <div class = "hover-galeria">
                             <p> ¡Visitanos, te esperamos! </p>
                         </div>

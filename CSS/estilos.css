@@ -179,3 +179,149 @@ body {
     padding: 15px;
     /* tamaño del botón */
 }
+
+
+
+
+
+
+/* Para dispositivos con un ancho de pantalla menor o igual a 576px */
+@media (max-width: 600px) {
+    .main {
+        width: 100%;
+    }
+    body {
+        font-size: 16px;
+    }
+    header nav {
+        width: 80%;
+        text-align: center;
+        align-items: center;
+        padding: 35px;    
+    }  
+    .imagen-about-us {
+        width: 100%;
+    } main .contenedor-sobre-nosotros .contenido-textos {
+        width: 100%;
+
+    }
+    .servicio-cont {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .servicio-ind {
+        width: 100%;
+        margin: 10px 0;
+    }.titulo {
+        font-size: 20px;
+    } .textos-header h1 {
+        font-size: 30px;
+    }.textos-header h2 {
+        font-size: 25px;
+    } main .contenedor-clientes .cards .card {
+        width: 90%;
+    
+    } .galeria-port {
+        justify-content: center;
+    }
+    .imagen-port {
+        width: 50%;
+        height: auto;
+        flex-wrap: wrap;
+        padding: 20px 0;}
+}
+
+
+/*Para dispositivos con una resolución máxima de 900px*/
+@media (max-width: 900px) {
+    .titulo {
+        font-size: 28px;
+    }
+    .contenido-textos {
+        padding: 30px;
+    }
+}
+
+/*Para dispositivos con una resolución mínima de 901px*/
+@media (min-width: 901px) {
+    .titulo {
+        font-size: 36px;
+    }
+    .contenido-textos {
+        padding: 60px;
+    }
+}
+@media (max-width: 768px) {
+    #GALERIA .galeria-port {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .galeria-port {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .imagen-port {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .contenedor-sobre-nosotros {
+      flex-direction: column;
+    }
+    .imagen-about-us {
+      margin-bottom: 1rem;
+    }
+  .contenido-textos {
+    width: 50%;
+    float: right;
+  }
+
+  .contenedor-sobre-nosotros {
+    padding: 10px;
+  }
+  
+  .imagen-about-us {
+    width: 100%;
+  }
+  
+  .contenido-textos {
+    width: 100%;
+    float: none;
+  }
+  .contenedor.clientes {
+    padding: 20px;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  } 
+  .contenido-texto-card {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Estilos para pantallas medianas */
+  @media screen and (max-width: 1024px) {
+    .contenedor-sobre-nosotros {
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 80%;
+    }
+    
+    .contenido-textos {
+      width: 80%;
+      float: none;
+    }
+}
+}
