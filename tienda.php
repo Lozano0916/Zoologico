@@ -24,7 +24,7 @@ $resultado = $conn->query($sql);
                 <li><a href="">Animales</a></li>
                 <li><a href="#">Acerca de</a></li>
                 <li><a href="#">Directorio</a></li>
-            </ul>
+            </ul> 
         </div>
     </nav>
   <div class="contenedor">
