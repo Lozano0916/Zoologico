@@ -17,11 +17,6 @@
         <nav>
 
             <a href = "index.html"> Inicio </a>
-            <a href = "#animales"> Animales </a>
-            <a href = "#horarios"> Horario y Precios </a>
-            <a href = "#ubicacion"> Ubicacion </a>
-            <a href = "tienda/tienda.php"> Tienda </a>
-
             <a href = "#MISION"> Nosotros </a>
             <a href = "#ANIMALES"> Animales </a>
             <a href = "#SERVICIOS"> Servicios </a>
