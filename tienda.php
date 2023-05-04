@@ -23,7 +23,7 @@ $resultado = $conn->query($sql);
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark ">
             <div class="container">
-                <a href="#" class="navbar-brand"> <img src="img/frailecillo.png" height="60px"> </a>
+                <a href="index.php" class="navbar-brand"> <img src="img/frailecillo.png" height="60px"> </a>
                 <button 
                     class="navbar-toggler"
                     type="button"
@@ -37,7 +37,7 @@ $resultado = $conn->query($sql);
                 <div class="collapse navbar-collapse" id="contenidoMenu">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Inicio</a>
+                            <a href="index.php" class="nav-link">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"> Productos </a>

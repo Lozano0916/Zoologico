@@ -84,9 +84,26 @@ main {
 } address {
     margin-top: 0;
     font-style: normal;
-} footer {
+}
+footer {
     background-color: #1b492e;
+    color: white;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
 
+.btn-data {
+    left: 20px;
+    position: absolute;
+    padding: 6px;
+    bottom: 12px;
+    border: none;
+    background-color: #1b492e;
+}
+
+.tamanio {
+    font-size: 23px;
 } .textos-header h2 {
     font-size: 30px;
     font-weight: 300;
