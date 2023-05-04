@@ -15,6 +15,8 @@
 <body>
     <header>
         <nav>
+
+            <a href = "index.html"> Inicio </a>
             <a href = "#MISION"> Nosotros </a>
             <a href = "#ANIMALES"> Animales </a>
             <a href = "#SERVICIOS"> Servicios </a>
@@ -214,7 +216,7 @@
     <script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
 
     <footer>
-        <p>Zoológico © 2023 Todos los derechos reservados</p>
+        <p>Zoological Gardens © 2023 Todos los derechos reservados</p>
         <a href="Iniciosesion.html"><button class="btn-data"><i class="fa-solid fa-database tamanio" style="color: #ffffff;"></i></button></a>
     </footer>
 </body>

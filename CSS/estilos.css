@@ -45,9 +45,69 @@ body {
 } .textos-header h1 {
     font-size: 50px;
     color: white;
+
+} 
+
+
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto; 
+    overflow: hidden;
+} section {
+    margin-bottom: 20px;
+}
+ header .textos-header{
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+} h2 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+} ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+} ul li {
+    margin-bottom: 5px;
+}ul li a {
+    text-decoration: none;
+    color: #333;
+} ul li a:hover {
+    text-decoration: underline;
+} address {
+    margin-top: 0;
+    font-style: normal;
+}
+footer {
+    background-color: #1b492e;
+    color: white;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.btn-data {
+    left: 20px;
+    position: absolute;
+    padding: 6px;
+    bottom: 12px;
+    border: none;
+    background-color: #1b492e;
+}
+
+.tamanio {
+    font-size: 23px;
 } .textos-header h2 {
     font-size: 30px;
     font-weight: 300;
+
     color: white;
 } .contenedor-sobre-nosotros {
     display: flex;
