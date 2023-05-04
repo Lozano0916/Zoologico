@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión
-require_once('includes/conexion.php');
+require_once('.../includes/conexion.php');
 
 // Hacer una consulta
 $sql = "SELECT * FROM productos";

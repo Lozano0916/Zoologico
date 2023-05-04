@@ -1,37 +1,35 @@
 <?php
 session_start();
 
-// Conectarse a la base de datos
+// Conectar a la base de datos
 require_once 'includes/conexion.php';
 
-// Verificar si se ha enviado el formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Verificar si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  // Recuperar los datos del formulario
-  $nombre = mysqli_real_escape_string($conexion, $_POST["nombre"]);
-  $contraseña = mysqli_real_escape_string($conexion, $_POST["contraseña"]);
-  $id_tipo_empleado = mysqli_real_escape_string($conexion, $_POST["id_tipo_empleado"]);
+	// Obtener los datos del formulario
+	$username = $_POST['nombre'];
+	$password = $_POST['contraseña'];
 
-  // Consultar la base de datos para verificar los datos del usuario
-  $consulta = "SELECT id, nombre, tipo FROM empleados WHERE nombre = '$nombre' AND contraseña = '$contraseña' AND id_tipo_empleado = '$id_tipo_empleado'";
-  $resultado = mysqli_query($conexion, $consulta);
+	// Hacer una consulta a la base de datos para verificar los datos
+	$resultado = mysqli_query($conn, "SELECT * FROM empleados WHERE nombre = '$username' AND contraseña = '$password'");
 
-  // Si la consulta devuelve un resultado válido, entonces iniciar sesión y redirigir
-  if (mysqli_num_rows($resultado) == 1) {
-    $fila = mysqli_fetch_assoc($resultado);
-    $_SESSION["id"] = $fila["id"];
-    $_SESSION["nombre"] = $fila["nombre"];
-    $_SESSION["id_tipo_empleado"] = $fila["id_tipo_empleado"];
-    header("Location: admin.php");
-    exit();
-  } else {
-    // Mostrar un mensaje de error si la consulta no devuelve un resultado válido
-    $error = "Usuario o contraseña incorrectos";
-  }
+	if (mysqli_num_rows($resultado) > 0) {
+		// Si los datos son correctos, iniciar sesión
+		$usuario = mysqli_fetch_assoc($resultado);
+
+		$_SESSION['id_tipo_empleado'] = $usuario;
+
+		// Redirigir al usuario según su tipo de usuario
+		if ($usuario['id_tipo_empleado'] === 1) {
+			header('Location: admin/admin.php');
+		} else {
+			header('Location: medic/medic.php');
+		}
+	} else {
+		// Si los datos son incorrectos, mostrar un mensaje de error
+		echo 'Nombre de usuario o contraseña incorrectos.';
+	}
 }
-
-// Cerrar la conexión a la base de datos
-mysqli_close($conexion);
 ?>
-
 
