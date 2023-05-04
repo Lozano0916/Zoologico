@@ -1,35 +1,37 @@
 <?php
 session_start();
-require_once('includes/conexion.php');
 
-$nombre = $_POST['nombre'];
-$contraseña = $_POST['contraseña'];
-$tipo_usuario = $_POST['id_tipo_empleado'];
+// Conectarse a la base de datos
+require_once 'includes/conexion.php';
 
-if ($tipo_usuario == 'Administrador') {
-	$sql = "SELECT * FROM empleados WHERE nombre='$nombre' AND contraseña='$contraseña'";
-	$resultado = $conn->query($sql);
+// Verificar si se ha enviado el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	if ($resultado->num_rows > 0) {
-		$_SESSION['nombre'] = $nombre;
-		$_SESSION['id_tipo_empleado'] = $tipo_usuario;
-		header("Location: admin.php");
-	} else {
-		header("Location: index.php?error=1");
-	}
-} else if ($tipo_usuario == 'empleado') {
-	$sql = "SELECT * FROM empleados WHERE nombre='$nombre' AND contraseña='$contraseña'";
-	$resultado = $conn->query($sql);
+  // Recuperar los datos del formulario
+  $nombre = mysqli_real_escape_string($conexion, $_POST["nombre"]);
+  $contraseña = mysqli_real_escape_string($conexion, $_POST["contraseña"]);
+  $id_tipo_empleado = mysqli_real_escape_string($conexion, $_POST["id_tipo_empleado"]);
 
-	if ($resultado->num_rows > 0) {
-		$_SESSION['nombre'] = $usuarionombre;
-		$_SESSION['id_tipo_empleado'] = $tipo_usuario;
-		header("Location: medic.php");
-	} else {
-		header("Location: index.php?error=1");
-	}
+  // Consultar la base de datos para verificar los datos del usuario
+  $consulta = "SELECT id, nombre, tipo FROM empleados WHERE nombre = '$nombre' AND contraseña = '$contraseña' AND id_tipo_empleado = '$id_tipo_empleado'";
+  $resultado = mysqli_query($conexion, $consulta);
+
+  // Si la consulta devuelve un resultado válido, entonces iniciar sesión y redirigir
+  if (mysqli_num_rows($resultado) == 1) {
+    $fila = mysqli_fetch_assoc($resultado);
+    $_SESSION["id"] = $fila["id"];
+    $_SESSION["nombre"] = $fila["nombre"];
+    $_SESSION["id_tipo_empleado"] = $fila["id_tipo_empleado"];
+    header("Location: admin.php");
+    exit();
+  } else {
+    // Mostrar un mensaje de error si la consulta no devuelve un resultado válido
+    $error = "Usuario o contraseña incorrectos";
+  }
 }
 
-$conn->close();
+// Cerrar la conexión a la base de datos
+mysqli_close($conexion);
 ?>
+
 
