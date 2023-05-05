@@ -17,13 +17,13 @@
         <nav>
 
             <a href = "index.html"> Inicio </a>
-            <a href = "#MISION"> Nosotros </a>
+            <a href = "admin/admin.php"> Nosotros </a>
             <a href = "#ANIMALES"> Animales </a>
             <a href = "#SERVICIOS"> Servicios </a>
             <a href = "#INFO"> Horarios y precios </a>
             <a href = "#INFO"> Ubicacion </a>
             <a href = "#GALERIA"> Galeria </a>
-            <a href = "tienda.php"> Tienda </a>
+            <a href = "tienda/tienda.php"> Tienda </a>
         </nav>
         <section class = "textos-header">
             <h1> BIENVENIDOS A ZOOLOGICAL GARDENS </h1>
