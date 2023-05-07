@@ -16,14 +16,14 @@
     <header>
         <nav>
 
-            <a href = "index.html"> Inicio </a>
-            <a href = "admin/admin.php"> Nosotros </a>
-            <a href = "#ANIMALES"> Animales </a>
-            <a href = "#SERVICIOS"> Servicios </a>
-            <a href = "#INFO"> Horarios y precios </a>
-            <a href = "#INFO"> Ubicacion </a>
-            <a href = "#GALERIA"> Galeria </a>
-            <a href = "tienda/tienda.php"> Tienda </a>
+            <a href = "index.html" class="line_animation"> Inicio </a>
+            <a href = "admin/admin.php" class="line_animation"> Nosotros </a>
+            <a href = "#ANIMALES" class="line_animation"> Animales </a>
+            <a href = "#SERVICIOS" class="line_animation"> Servicios </a>
+            <a href = "#INFO" class="line_animation"> Horarios y precios </a>
+            <a href = "#INFO" class="line_animation"> Ubicacion </a>
+            <a href = "#GALERIA" class="line_animation"> Galeria </a>
+            <a href = "tienda/tienda.php" class="line_animation"> Tienda </a>
         </nav>
         <section class = "textos-header">
             <h1> BIENVENIDOS A ZOOLOGICAL GARDENS </h1>
@@ -217,7 +217,8 @@
 
     <footer>
         <p>Zoological Gardens © 2023 Todos los derechos reservados</p>
-        <a href="Iniciosesion.html"><button class="btn-data"><i class="fa-solid fa-database tamanio" style="color: #ffffff;"></i></button></a>
+        <a href="#"><button class="btn-face"><i class="fa-brands fa-facebook tamanio" style="color: #ffffff;"></i></button></a>
+        <a href="#"><button class="btn-insta"><i class="fa-brands fa-instagram tamanio" style="color: #ffffff;"></i></button></a>
     </footer>
 </body>
 </html>

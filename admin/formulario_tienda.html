@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/admin.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="procesar_login.php" method="POST">
+        <label for="username">Nombre:</label>
+        <input type="text" id="username" name="nombre" required>
+    
+        <label for="password">Descripción:</label>
+        <input type="password" id="password" name="descripcion" required>
+
+        <label for="username">Precio:</label>
+        <input type="text" id="price" name="precio" required>
+
+        <input type="file" name="imagen" id="imagen">
+        <label for="imagen" class="boton_imagen">Cargar imagen</label>
+
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</body>
+</html>

@@ -58,18 +58,29 @@ th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-button.btn-tienda {
+.boton {
     background-color: #1b492e;
     color: white;
-    border: none;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-top: 10px;
-    align-items: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boton:hover{
+    background: #218249;
 }
 
-button.btn-tienda :hover {
-    background-color: #218249;
+.boton_imagen {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#imagen {
+    display: none;
 }

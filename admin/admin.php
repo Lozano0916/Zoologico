@@ -23,14 +23,14 @@ require ('../includes/conexion.php')
 
 <center>
   <h1>Tienda</h1>
-  <button class="btn-tienda">Agregar produtos</button>
-  <button class="btn-tienda">Eliminar produtos</button>
-  <button class="btn-tienda">Editar produtos</button>
+  <a href="formulario_tienda.html"><button class="boton">Agregar producto</button></a>
+  <button class="boton">Eliminar producto</button>
+  <button class="boton">Editar producto</button>
 	<table border="1" >
 		<tr>
 			<td>Id</td>
 			<td>Nombre</td>
-			<td>Descripcio</td>
+			<td>Descripcion</td>
 			<td>Precio</td>
 			<td>imagen</td>	
 		</tr>

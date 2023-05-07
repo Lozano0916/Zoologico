@@ -8,7 +8,7 @@ $resultado = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,7 @@ $resultado = $conn->query($sql);
                 <div class="collapse navbar-collapse" id="contenidoMenu">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link">Inicio</a>
+                            <a href="../index.php" class="nav-link">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"> Productos </a>
@@ -64,7 +64,7 @@ $resultado = $conn->query($sql);
           <h2><?php echo $row['nombre']; ?></h2>
           <p><?php echo $row['descripcion']; ?></p>
           <span class="precio">$<?php echo $row['precio']; ?></span>
-          <center><button class="comprar">Comprar</button></center>
+          <br><button class="boton">Comprar</button>
         </div>
       <?php endwhile; ?>
     <?php else: ?>

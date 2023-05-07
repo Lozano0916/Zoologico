@@ -53,18 +53,15 @@ nav.navbar:hover{
     color: black;
     font-size: 24px;
 }
-button.comprar {
+.boton {
     background-color: #1b492e;
     color: white;
-    border: none;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;
-    align-items: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
-button.comprar :hover{
-    background-color: #4CAF50;
+
+.boton:hover {
+    background: #218249;
 }
