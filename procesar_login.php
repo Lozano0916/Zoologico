@@ -6,27 +6,24 @@ $contraseña=$_POST['contraseña'];
 session_start();
 $_SESSION['nombre']=$nombre;
 
+$contraseña_encriptada = password_hash($contraseña, PASSWORD_DEFAULT);
+
 
 $consulta="SELECT*FROM empleados where nombre='$nombre' and contraseña='$contraseña'";
 $resultado=mysqli_query($conn,$consulta);
 
 $filas=mysqli_fetch_array($resultado);
 
-if($filas['id_tipo_empleado']==1){ //administrador
-    header("location: admin/admin.php");
+if(mysqli_num_rows($resultado) > 0) {
+   if($filas['id_tipo_empleado']==1){ //administrador
+      header("location: admin/admin.php");
+   } else if($filas['id_tipo_empleado']==2){ //medico
+      header("location: medic/medic.php");
+   }   
+} else {
+   echo "<script>alert('Usuario o contraseña incorrectas'); window.location.href = 'Iniciosesion.html';</script>";
+}
 
-}else
-if($filas['id_tipo_empleado']==2){ //medico
-header("location: medic/medic.php");
-}
-else{
-    ?>
-    <?php
-    include("index.php");
-    ?>
-    <h1 class="bad">ERROR EN LA AUTENTIFICACION</h1>
-    <?php
-}
 mysqli_free_result($resultado);
-mysqli_close($conexion);
+mysqli_close($conn);
 ?>
