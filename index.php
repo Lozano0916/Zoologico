@@ -15,8 +15,8 @@
 <body>
     <header>
         <nav>
-
-            <a href = "index.html" class="line_animation"> Inicio </a>
+            <a href= "iniciosesion.html" class="line_animation"> Empleados </a>
+            <a href = "#MISION" class="line_animation"> Inicio </a>
             <a href = "admin/admin.php" class="line_animation"> Nosotros </a>
             <a href = "#ANIMALES" class="line_animation"> Animales </a>
             <a href = "#SERVICIOS" class="line_animation"> Servicios </a>
