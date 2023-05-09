@@ -220,5 +220,6 @@
         <a href="#"><button class="btn-face"><i class="fa-brands fa-facebook tamanio" style="color: #ffffff;"></i></button></a>
         <a href="#"><button class="btn-insta"><i class="fa-brands fa-instagram tamanio" style="color: #ffffff;"></i></button></a>
     </footer>
+
 </body>
 </html>

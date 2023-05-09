@@ -99,7 +99,7 @@ require ('../includes/conexion.php')
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Imagen:</label>
-            <input type="text" class="form-control" id="precio_" name="imagen_">
+            <input type="text" class="form-control" id="imagen_" name="imagen_">
           </div>
 
         </form>
