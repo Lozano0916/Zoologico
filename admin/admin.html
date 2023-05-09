@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/admin.css">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Selecciona una tabla de la base de datos</h1>
+        <form action="procesar_tabla.php" method="POST">
+            <label for="tabla">Tabla:</label>
+            <select id="tabla" name="tabla">
+                <option value="tabla1">Tabla 1</option>
+                <option value="tabla2">Tabla 2</option>
+                <option value="tabla3">Tabla 3</option>
+            </select>
+            <input type="submit" value="Seleccionar">
+        </form>
+        <h2>Descripción de las tablas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tabla 1</td>
+                    <td>Descripción de la tabla 1.</td>
+                </tr>
+                <tr>
+                    <td>Tabla 2</td>
+                    <td>Descripción de la tabla 2.</td>
+                </tr>
+                <tr>
+                    <td>Tabla 3</td>
+                    <td>Descripción de la tabla 3.</td>
+                </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>

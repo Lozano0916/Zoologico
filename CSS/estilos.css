@@ -366,9 +366,7 @@ footer {
     .contenedor-sobre-nosotros {
       flex-direction: column;
     }
-    .imagen-about-us {
-      margin-bottom: 1rem;
-    }
+  
   .contenido-textos {
     width: 50%;
     float: right;
