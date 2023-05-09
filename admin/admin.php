@@ -14,7 +14,7 @@ require ('../includes/conexion.php')
 </head>
 <body>
     <div class="sidebar">
-      <a href="../index.php" class="navbar-brand"> <img src="../img/frailecillo.png" height="80px"> </a>
+      <a href="../index.php" class="navbar-brand"> <img src="../images/frailecillo.png" height="80px"> </a>
 	  <ul>
 	    <li><a href="#">Inicio</a></li>
 	    <li><a href="#">Tienda</a></li>
