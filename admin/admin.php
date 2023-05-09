@@ -10,6 +10,7 @@ require ('../includes/conexion.php')
     <link rel="stylesheet" type="text/css" href="../CSS/admin.css">
     <title>Administrador</title>
 	<script src="jquery-3.6.4.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
     <div class="sidebar">
@@ -29,7 +30,7 @@ require ('../includes/conexion.php')
 	<input class="buscar"type="text" name="query" placeholder="Buscar...">
 	<button class="boton" type="submit">Buscar</button>
 	</form>
-	<div class="container">
+	<div class="table " id="tienda">
 		<table>
 			<thead>
 			<tr>
@@ -47,6 +48,8 @@ require ('../includes/conexion.php')
 				$sql="SELECT * from productos";
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
+
+					$arreglo = $mostrar['nombre'].','.$mostrar['descripcion'].','.$mostrar['precio'].','.$mostrar['imagen'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_producto'] ?></td>
@@ -54,8 +57,8 @@ require ('../includes/conexion.php')
 					<td><?php echo $mostrar['descripcion'] ?></td>
 					<td><?php echo $mostrar['precio'] ?></td>
 					<td><img src="<?php echo $mostrar['imagen'] ?>"   height=120px ></td>
-					<td><button class="boton" onclick="mostrarModal1();editar('<?php $result?>')">Editar</button></td>
-					<td><button class="boton">Eliminar</button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')">Editar</button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="boton">Eliminar</button></td>
 				</tr>
 				<?php 
 				}
@@ -68,66 +71,81 @@ require ('../includes/conexion.php')
 
 
 
+<!-- Opcion de editar -->
+<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_tienda">
 
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_" name="nombre_">
+          </div>
 
-<div id="agregar" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModal()">&times;</span>
-    <h2>Agregar elemento</h2>
-    <form>
-      <label>Nombre:</label>
-      <input type="text" name="nombre">
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Descripcion:</label>
+            <input type="text" class="form-control" id="descripcion_" name="descripcion_">
+          </div>
 
-      <label>Descripción:</label>
-      <input name="descripcion"></input>
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Precio:</label>
+            <input type="text" class="form-control" id="precio_" name="precio_">
+          </div>
 
-	  <label>Precio:</label>
-      <input name="precio"></input>
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Imagen:</label>
+            <input type="text" class="form-control" id="precio_" name="imagen_">
+          </div>
 
-      <button class="boton" type="button" onclick="agregarElemento()">Agregar</button>
-    </form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="boton" id="editar_tienda">Aceptar</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="editar" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="cerrarModal1()">&times;</span>
-    <h2>Editar producto</h2>
-    <form>
-      <label>Nombre:</label>
-      <input type="text" name="nombre">
-
-      <label>Descripción:</label>
-      <input name="descripcion"></input>
-
-	  <label>Precio:</label>
-      <input name="precio"></input>
-
-      <button class="boton" type="button" onclick="editarProducto()">Editar</button>
-    </form>
+<!-- Opcion de eliminar -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
   </div>
 </div>
-
-<script>
-function mostrarModal() {
-  document.getElementById("agregar").style.display = "block";
-}
-
-function cerrarModal() {
-  document.getElementById("agregar").style.display = "none";
-}
-function mostrarModal1() {
-  document.getElementById("editar").style.display = "block";
-}
-
-function cerrarModal1() {
-  document.getElementById("editar").style.display = "none";
-}
-</script>
-
-
 
 
 <script src="funciones.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -58,7 +58,7 @@ body {
 
 }
 
-.container {
+.table{
     border: solid 1px #1b492e;
     margin-top: 10%;
 }
@@ -67,7 +67,7 @@ table {
     color: black;
     font-size: 14px;
     table-layout: fixed;
-    border-collapse: collapse;
+    
 }
 
 thead {
@@ -147,7 +147,7 @@ tbody tr:hover {
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 30%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
