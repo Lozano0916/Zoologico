@@ -1,10 +1,12 @@
 function editar(arreglo) {
     cadena=arreglo.split(',');
 
-    $("#nombre_").val(cadena[0]);
-    $("#descripcion_").val(cadena[1]);
-    $("#precio_").val(cadena[2]);
-    $("#imagen_").val(cadena[3]);
+    alert(cadena)
+    $("#id_").val(cadena[0]);
+    $("#nombre_").val(cadena[1]);
+    $("#descripcion_").val(cadena[2]);
+    $("#precio_").val(cadena[3]);
+    $("#imagen_").val(cadena[4]);
 }
 
 $('#editar_tienda').click(function() {
@@ -19,7 +21,7 @@ $('#editar_tienda').click(function() {
 
         success:function(variable) {
             $('#tienda').load('admin.php #tienda');
-            alert("Cambios exitosos")
+            $('#editar').modal('hide');
         }
     })
-});
+}); 

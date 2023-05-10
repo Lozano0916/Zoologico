@@ -25,12 +25,13 @@ require ('../includes/conexion.php')
 
 <center>
   <h1>Tienda</h1>
-  <button class="boton" onclick="mostrarModal()">Agregar producto</button>
+  <button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
   <form action="busqueda.php" method="get" class="search-form">
 	<input class="buscar"type="text" name="query" placeholder="Buscar...">
 	<button class="boton" type="submit">Buscar</button>
 	</form>
-	<div class="table " id="tienda">
+  <div id="tienda">
+	<div class="table">
 		<table>
 			<thead>
 			<tr>
@@ -40,7 +41,7 @@ require ('../includes/conexion.php')
 				<td>Precio</td>
 				<td>imagen</td>
 				<td>Editar</td>
-				<td>Elminiar</td>
+				<td>Eliminar</td>
 			</tr>
 			</thead>
 			<tbody>
@@ -49,7 +50,7 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-					$arreglo = $mostrar['nombre'].','.$mostrar['descripcion'].','.$mostrar['precio'].','.$mostrar['imagen'];
+					$arreglo = $mostrar['id_producto'].','.$mostrar['nombre'].','.$mostrar['descripcion'].','.$mostrar['precio'].','.$mostrar['imagen'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_producto'] ?></td>
@@ -66,9 +67,48 @@ require ('../includes/conexion.php')
 			</tbody>
 		</table>
 	</div>
-
+  </div>
 </center>
 
+<div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_tienda">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_" name="nombre_">
+          </div>
+
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Descripcion:</label>
+            <input type="text" class="form-control" id="descripcion_" name="descripcion_">
+          </div>
+
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Precio:</label>
+            <input type="text" class="form-control" id="precio_" name="precio_">
+          </div>
+
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Imagen:</label>
+            <input type="text" class="form-control" id="imagen_" name="imagen_">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="boton" id="editar_tienda">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Opcion de editar -->
@@ -81,6 +121,13 @@ require ('../includes/conexion.php')
       </div>
       <div class="modal-body">
         <form id="for_tienda">
+
+        
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_" name="id_" disabled>
+          </div>
+
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Nombre:</label>
