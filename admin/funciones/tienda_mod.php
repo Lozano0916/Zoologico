@@ -17,6 +17,7 @@
     
     $resultado = mysqli_query($conn,$editar);
     
+    
     mysqli_close($conn);
 
 ?>
