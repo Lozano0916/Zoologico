@@ -161,13 +161,12 @@ require ('../includes/conexion.php')
       <div class="modal-body">
         <form id="for_tienda">
 
-        
+          
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="id_" name="id_" disabled>
+            <input type="text" class="form-control" id="id_" name="id_" readonly>
           </div>
-
-
+           
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Nombre:</label>
             <input type="text" class="form-control" id="nombre_" name="nombre_">
@@ -211,28 +210,27 @@ require ('../includes/conexion.php')
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre_" name="nombre_">
+            <input type="text" class="form-control" id="nombre_gg" name="nombre_gg">
           </div>
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Descripcion:</label>
-            <input type="text" class="form-control" id="descripcion_" name="descripcion_">
+            <input type="text" class="form-control" id="descripcion_gg" name="descripcion_gg">
           </div>
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="precio_" name="precio_">
+            <input type="text" class="form-control" id="precio_gg" name="precio_gg">
           </div>
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Imagen:</label>
-            <input type="text" class="form-control" id="imagen_" name="imagen_">
+            <input type="text" class="form-control" id="imagen_gg" name="imagen_gg">
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="boton" id="agregar_tienda">Aceptar</button>
       </div>
     </div>
@@ -245,27 +243,26 @@ require ('../includes/conexion.php')
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro que quieres eliminar este producto?</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="for_tienda_eli">
 
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="" hidden="">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli" name="id_eli" hidden="">
           </div>
-
+          <br>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Producto:</label>
-            <input type="text" class="form-control" id="" hidden="">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Producto:</label>
+            <input type="text" class="form-control" id="pro_eli" name="pro_eli" hidden="">
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="boton">Eliminar</button>
       </div>
     </div>
   </div>

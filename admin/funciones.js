@@ -10,17 +10,17 @@ function editar(arreglo) {
 
 $('#editar_tienda').click(function() {
     var recolectar = $('#for_tienda').serialize(); 
-    alert(recolectar);
     
     $.ajax({
         url: 'funciones/tienda_mod.php',
         type: 'POST',
         data: recolectar,
 
-        success:function() {
-            alert("Si recolecte los datos");
+        success:function(variable) {
             $('#tienda').load('admin.php #tienda');
             $('#editar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -31,19 +31,35 @@ $('#editar_tienda').click(function() {
     
 }); 
 
-//$('#agregar_tienda').click(function () {
-//    var recolectar = $('#for_tienda_agg').serialize();
-//
-//    alert(recolectar);
-//
-//    $.ajax({
-//        URL: 'funciones/tienda_agregar.php',
-//        type: 'POST',
-//        data: recolectar,
-//
-//        success: function (variable) {
-//            $('#tienda').load('admin.php #tienda');
-//            $('#agregar').modal('hide');
-//        }
-//    })
-//});
+$('#agregar_tienda').click(function () {
+    var recolectar = $('#for_tienda_agg').serialize();
+
+    $.ajax({
+        url: 'funciones/tienda_agregar.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            $('#tienda').load('admin.php #tienda');
+            $('#agregar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+        }
+    })
+});
+$('#eliminar_tienda').click(function () {
+    var recolectar = $('#for_tienda_eli').serialize();
+
+    $.ajax({
+        url: 'funciones/tienda_agregar.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            $('#tienda').load('admin.php #tienda');
+            $('#agregar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+        }
+    })
+});
