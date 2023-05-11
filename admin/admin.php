@@ -27,10 +27,6 @@ require ('../includes/conexion.php')
 	<input class="buscar"type="text" name="query" placeholder="Buscar...">
 	<button class="boton" type="submit">Buscar</button>
 	</form><br>
-  <button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
-  
-  
-  
   <select id="menu">
   <option value="option1">Tienda</option>
   <option value="option2">Empleados</option>
@@ -39,7 +35,7 @@ require ('../includes/conexion.php')
   <option value="option3">Animales</option>
   <option value="option3">Alimentos</option>
 </select>
-
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
 <div id="option1" class="opciones">
 <h1>Tienda</h1>
 <div id="tienda">
@@ -71,7 +67,7 @@ require ('../includes/conexion.php')
 					<td><?php echo $mostrar['precio'] ?></td>
 					<td><img src="<?php echo $mostrar['imagen'] ?>"   height=120px ></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')">Editar</button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="boton">Eliminar</button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')">Eliminar</button></td>
 				</tr>
 				<?php 
 				}
@@ -239,11 +235,11 @@ require ('../includes/conexion.php')
 
 
 <!-- Opcion de eliminar tienda-->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro que quieres eliminar este producto?</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este producto?</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -251,18 +247,18 @@ require ('../includes/conexion.php')
 
           <div class="mb-3">
             <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="id_eli" name="id_eli" hidden="">
+            <input type="text" class="form-control" id="id_eli" name="id_eli" readonly>
           </div>
           <br>
           <div class="mb-3">
             <label for="recipient-name" id="pro_eli_label" class="col-form-label">Producto:</label>
-            <input type="text" class="form-control" id="pro_eli" name="pro_eli" hidden="">
+            <input type="text" class="form-control" id="pro_eli" name="pro_eli" readonly>
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="boton">Eliminar</button>
+        <button type="button"  class="boton" id="eliminar_tienda">Eliminar</button>
       </div>
     </div>
   </div>

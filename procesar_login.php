@@ -13,14 +13,13 @@ $consulta="SELECT*FROM empleados where nombre='$nombre' and contraseña='$contra
 $resultado=mysqli_query($conn,$consulta);
 
 $filas=mysqli_fetch_array($resultado);
-
-if(mysqli_num_rows($resultado) > 0) {
-   if($filas['id_tipo_empleado']==1){ //administrador
-      header("location: admin/admin.php");
-   } else if($filas['id_tipo_empleado']==2){ //medico
-      header("location: medic/medic.php");
-   }   
-} else {
+   if(mysqli_num_rows($resultado) > 0) {
+      if($filas['id_tipo_empleado']==1){ //administrador
+         header("location: admin/admin.php");
+      } else if($filas['id_tipo_empleado']==2){ //medico
+         header("location: medic/medic.php");
+      }
+}else {
    echo "<script>alert('Usuario o contraseña incorrectas'); window.location.href = 'Iniciosesion.html';</script>";
 }
 

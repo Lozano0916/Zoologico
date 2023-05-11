@@ -1,3 +1,4 @@
+//Editar productos a la tienda
 function editar(arreglo) {
     cadena=arreglo.split(',');
 
@@ -12,7 +13,7 @@ $('#editar_tienda').click(function() {
     var recolectar = $('#for_tienda').serialize(); 
     
     $.ajax({
-        url: 'funciones/tienda_mod.php',
+        url: 'funciones_tienda/tienda_mod.php',
         type: 'POST',
         data: recolectar,
 
@@ -30,12 +31,12 @@ $('#editar_tienda').click(function() {
     })
     
 }); 
-
+//Agregar productos a la tienda
 $('#agregar_tienda').click(function () {
     var recolectar = $('#for_tienda_agg').serialize();
 
     $.ajax({
-        url: 'funciones/tienda_agregar.php',
+        url: 'funciones_tienda/tienda_agregar.php',
         type: 'POST',
         data: recolectar,
 
@@ -44,22 +45,37 @@ $('#agregar_tienda').click(function () {
             $('#agregar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+
+            $('#nombre_gg').val("");
+            $('#descripcion_gg').val("");
+            $('#precio_gg').val("");
+            $('#imagen_gg').val("");
         }
     })
 });
+
+//Eliminar productos de la tienda
+function eliminar(arreglo) {
+    cadena = arreglo.split(',');
+
+    $("#id_eli").val(cadena[0]);
+    $("#pro_eli").val(cadena[1]);
+    alert(cadena);
+}
+
 $('#eliminar_tienda').click(function () {
     var recolectar = $('#for_tienda_eli').serialize();
-
+    alert(recolectar);
     $.ajax({
-        url: 'funciones/tienda_agregar.php',
+        url: 'funciones_tienda/tienda_eliminar.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable1) {
             $('#tienda').load('admin.php #tienda');
-            $('#agregar').modal('hide');
+            $('#eliminar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
         }
     })
-});
+}); 

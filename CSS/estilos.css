@@ -416,3 +416,19 @@ footer {
     }
 }
 }
+/* Estilo del scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Estilo del thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #1b492e;
+    border-radius: 5px;
+}
+
+/* Estilo del fondo */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
