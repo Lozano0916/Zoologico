@@ -1,0 +1,41 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #1b492e;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 12px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar li a:hover {
+    background-color: #218249;
+}
+
+.sidebar li:last-child {
+    margin-top: auto;
+}
+
+.sidebar li:last-child a {
+    margin-top: 300px;
+}
