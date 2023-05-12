@@ -12,32 +12,71 @@ require ('../includes/conexion.php')
 	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-    <div class="sidebar">
-      <a href="../index.php" class="navbar-brand"> <img src="../images/frailecillo.png" height="80px"> </a>
-	  <ul>
-	    <li><a href="#">Inicio</a></li>
-	    <li><a href="#">Ventas</a></li>
-	    <li><a href="#">Estadisticas</a></li>
-	    <li><a href="../logout.php">Cerrar sesion <i class="fa-solid fa-right-from-bracket"></i></a></li>
-	  </ul>
-	</div>
 
-<center>
-  <form action="busqueda.php" method="get" class="search-form">
-	<input class="buscar"type="text" name="query" placeholder="Buscar...">
-	<button class="boton" type="submit">Buscar</button>
-	</form><br>
-  <select id="menu">
-  <option value="option1">Tienda</option>
-  <option value="option2">Empleados</option>
-  <option value="option3">Recintos</option>
-  <option value="option3">Medicamentos</option>
-  <option value="option3">Animales</option>
-  <option value="option3">Alimentos</option>
-</select>
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <img class="logo-img" src="../images/frailecillo.png"/>
+      </header>
+      <nav>
+        <button>
+          <span>
+            <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+            <span>Inicio</span>
+          </span>
+        </button>
+        <button>
+          <span>
+            <i class="fa-solid fa-money-bill-trend-up" style="color: #ffffff;"></i>
+            <span>Ventas</span>
+          </span>
+        </button>
+        <button>
+          <span>
+            <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
+            <a href="#"><span>Estadisticas</span></a>
+          </span>
+        </button>
+        <button>
+          <span>
+            <i class="fa-light fa-table-tree" style="color: #ffffff;"></i>
+            <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
+            <option value="option2">Empleados</option>
+            <option value="option3">Medicamentos</option>
+            <option value="option4">Recintos</option>
+            <option value="option5">Animales</option>
+            <option value="option6">Alimentos</option>
+            </select></span>
+          </span>
+        </button>
+        <button id="logout-button">
+          <span>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Cerrar sesion</span>
+          </span>
+        </button>
+      </nav>
+    </aside>
+
+<!-- logout -->    
+<script>
+  var logoutButton = document.getElementById("logout-button");
+  var logoutLink = document.createElement("a");
+  logoutLink.href = "../logout.php";
+  logoutLink.style.display = "none";
+  document.body.appendChild(logoutLink);
+
+  logoutButton.onclick = function() {
+    logoutLink.click();
+  };
+</script>
+
+
+<!-- tablas -->    
+<!-- Tienda -->    
 <div id="option1" class="opciones">
-<h1>Tienda</h1>
+<center><h1>Tienda</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
 <div id="tienda">
 	<div class="table">
 		<table>
@@ -65,9 +104,9 @@ require ('../includes/conexion.php')
 					<td><?php echo $mostrar['nombre'] ?></td>
 					<td><?php echo $mostrar['descripcion'] ?></td>
 					<td><?php echo $mostrar['precio'] ?></td>
-					<td><img src="<?php echo $mostrar['imagen'] ?>"   height=120px ></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')">Editar</button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')">Eliminar</button></td>
+					<td><img src="<?php echo $mostrar['imagen'] ?>"   height=100px ></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
 				</tr>
 				<?php 
 				}
@@ -77,6 +116,8 @@ require ('../includes/conexion.php')
 	</div>
   </div>
 </div>
+
+<!-- Empleados -->    
 <div id="option2" class="opciones" style="display:none;">
 <h1>Empleados</h1>
 <div>
@@ -111,8 +152,8 @@ require ('../includes/conexion.php')
           <td><?php echo $mostrar['numero_telefonico'] ?></td>
           <td><?php echo $mostrar['edad'] ?></td>
           <td><?php echo $mostrar['direccion'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')">Editar</button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="boton">Eliminar</button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -123,7 +164,51 @@ require ('../includes/conexion.php')
   </div>
 </div>
 
-<div id="option3" class="opciones" style="display:none;">Contenido de la opción 3</div>
+<!-- Medicamentos -->    
+<div id="option3" class="opciones" style="display:none;">
+<h1>Medicamentos</h1>
+<div id="tienda">
+	<div class="table">
+		<table>
+			<thead>
+			<tr>
+				<td>Id</td>
+				<td>Nombre</td>
+				<td>laboratorio</td>
+				<td>existencias</td>
+				<td>fecha compra</td>
+				<td>fecha vcto</td>
+				<td>lote</td>
+        <td>Agregar</td>
+        <td>Eliminar</td>
+			</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$sql="SELECT * from medicamentos";
+				$result=mysqli_query($conn,$sql);
+				while($mostrar=mysqli_fetch_array($result)){
+				 ?>
+				<tr>
+					<td><?php echo $mostrar['id_medicamento'] ?></td>
+					<td><?php echo $mostrar['nombre'] ?></td>
+					<td><?php echo $mostrar['laboratorio'] ?></td>
+					<td><?php echo $mostrar['existencias'] ?></td>
+          <td><?php echo $mostrar['fecha_vencimiento'] ?></td>
+          <td><?php echo $mostrar['fecha_compra'] ?></td>
+          <td><?php echo $mostrar['lote'] ?></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
+				</tr>
+				<?php 
+				}
+				 ?>
+			</tbody>
+		</table>
+	</div>
+  </div>
+
+</div>
 
 <script>
   // Agregar un evento change al elemento select
@@ -141,7 +226,7 @@ require ('../includes/conexion.php')
     document.getElementById(opcion).style.display = "block";
   });
 </script>
-</center>
+
   
 
 

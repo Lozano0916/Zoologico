@@ -125,10 +125,10 @@ body {
 
 .toggle-password i {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 20px;
   color: #aaa;
+  right: 12px;
+  margin-top: -25px;
 }
 
 .show-password {
