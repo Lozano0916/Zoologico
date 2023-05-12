@@ -208,7 +208,7 @@
 .tablas_menu:focus {
     outline: none;
     /* Quitamos el borde al hacer foco */
-    box-shadow: 0 0 5px #6699ff;
+    box-shadow: 0 0 5px #FFF8DE;
     /* Añadimos una sombra */
 }
 
@@ -219,9 +219,13 @@
 
 /* Estilos del foco del ícono */
 .tablas_menu:focus:after {
-    color: #6699ff;
+    color: #FFF8DE;
 }
-
+.opciones{
+    margin-left: 600px;
+    margin-right: 300px;
+    width: 80%;
+}
 /*************tablas *********/
 
 body {
@@ -235,8 +239,7 @@ body {
 .table{
     border: solid 1px #1b492e;
     margin-top: 5%;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 table {

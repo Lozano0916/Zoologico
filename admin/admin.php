@@ -119,8 +119,10 @@ require ('../includes/conexion.php')
 
 <!-- Empleados -->    
 <div id="option2" class="opciones" style="display:none;">
-<h1>Empleados</h1>
-<div>
+<center><h1>Empleados</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
+<div id="empleados">
 	<div class="table">
 		<table>
 			<thead>
@@ -142,6 +144,8 @@ require ('../includes/conexion.php')
 				$sql="SELECT * from empleados";
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
+
+          $arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_empleado'] ?></td>
@@ -152,8 +156,8 @@ require ('../includes/conexion.php')
           <td><?php echo $mostrar['numero_telefonico'] ?></td>
           <td><?php echo $mostrar['edad'] ?></td>
           <td><?php echo $mostrar['direccion'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar('<?php echo $arreglo2?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -166,7 +170,8 @@ require ('../includes/conexion.php')
 
 <!-- Medicamentos -->    
 <div id="option3" class="opciones" style="display:none;">
-<h1>Medicamentos</h1>
+<center><h1>Medicamentos</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
 <div id="tienda">
 	<div class="table">
 		<table>
@@ -348,10 +353,71 @@ require ('../includes/conexion.php')
     </div>
   </div>
 </div>
+<script src="funciones.js"></script>
+<!-- Opcion de editar empleado -->
+<div class="modal fade" id="editar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar empleado</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_empleados">
+
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_empleado" name="id_empleado" readonly>
+          </div>
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo Empleado:</label>
+            <input type="text" class="form-control" id="tipo_empleado" name="tipo_empleado">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="email_empleado" name="email_empleado">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Sexo:</label>
+            <input type="text" class="form-control" id="sexo_empleado" name="sexo_empleado">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero:</label>
+            <input type="text" class="form-control" id="numero_empleado" name="numero_empleado">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Edad:</label>
+            <input type="text" class="form-control" id="edad_empleado" name="edad_empleado">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Direccion:</label>
+            <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="editar_empleados">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="funciones_empleados/funciones_empleados.js"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="funciones.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 
