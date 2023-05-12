@@ -9,6 +9,7 @@
     $numero=$_POST['numero_empleado'];
     $edad=$_POST['edad_empleado'];
     $direccion=$_POST['direccion_empleado'];
+    
 
 
     $editar = "UPDATE empleados SET id_tipo_empleado='$tipo_empleado',nombre='$nombre',

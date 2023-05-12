@@ -156,8 +156,8 @@ require ('../includes/conexion.php')
           <td><?php echo $mostrar['numero_telefonico'] ?></td>
           <td><?php echo $mostrar['edad'] ?></td>
           <td><?php echo $mostrar['direccion'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar('<?php echo $arreglo2?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_emp('<?php echo $arreglo2?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton" onclick="eliminar_emp('<?php echo $arreglo2?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -179,11 +179,11 @@ require ('../includes/conexion.php')
 			<tr>
 				<td>Id</td>
 				<td>Nombre</td>
-				<td>laboratorio</td>
-				<td>existencias</td>
-				<td>fecha compra</td>
-				<td>fecha vcto</td>
-				<td>lote</td>
+				<td>Laboratorio</td>
+				<td>Existencias</td>
+				<td>Fecha compra</td>
+				<td>Fecha vcto</td>
+				<td>Lote</td>
         <td>Agregar</td>
         <td>Eliminar</td>
 			</tr>
@@ -215,6 +215,143 @@ require ('../includes/conexion.php')
 
 </div>
 
+<!-- recintos -->    
+<div id="option4" class="opciones" style="display:none;">
+<center><h1>Recintos</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
+<div id="recintos">
+	<div class="table">
+		<table>
+			<thead>
+			<tr>
+				<td>Id recinto</td>
+				<td>Tipo recinto</td>
+				<td>Numero animales</td>
+				<td>Estado</td>
+        <td>Editar</td>
+        <td>Eliminar</td>
+			</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$sql="SELECT * from recintos";
+				$result=mysqli_query($conn,$sql);
+				while($mostrar=mysqli_fetch_array($result)){
+
+          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+				 ?>
+				<tr>
+					<td><?php echo $mostrar['id_recintos'] ?></td>
+					<td><?php echo $mostrar['id_recinto'] ?></td>
+					<td><?php echo $mostrar['n_animales'] ?></td>
+					<td><?php echo $mostrar['estado'] ?></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+				</tr>
+				<?php 
+				}
+				 ?>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
+
+<!-- Animales -->    
+<div id="option5" class="opciones" style="display:none;">
+<center><h1>Animales</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
+<div id="recintos">
+	<div class="table">
+		<table>
+			<thead>
+			<tr>
+				<td>Id animales</td>
+				<td>Nombre</td>
+				<td>Especie</td>
+				<td>Numero ejemplares</td>
+        <td>Editar</td>
+        <td>Eliminar</td>
+			</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$sql="SELECT * from animales";
+				$result=mysqli_query($conn,$sql);
+				while($mostrar=mysqli_fetch_array($result)){
+
+          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+				 ?>
+				<tr>
+					<td><?php echo $mostrar['id_animales'] ?></td>
+					<td><?php echo $mostrar['nombre'] ?></td>
+					<td><?php echo $mostrar['especie'] ?></td>
+					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+				</tr>
+				<?php 
+				}
+				 ?>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
+
+
+<!-- alimentos -->    
+<div id="option6" class="opciones" style="display:none;">
+<center><h1>Alimentos</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
+<div id="recintos">
+	<div class="table">
+		<table>
+			<thead>
+			<tr>
+				<td>Id alimento</td>
+				<td>Nombre</td>
+				<td>Tipo</td>
+				<td>Provedor</td>
+        <td>Precio</td>
+        <td>Existencias</td>
+        <td>Fecha vcto</td>
+        <td>Editar</td>
+        <td>Eliminar</td>
+			</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$sql="SELECT * from alimentos";
+				$result=mysqli_query($conn,$sql);
+				while($mostrar=mysqli_fetch_array($result)){
+
+          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+				 ?>
+				<tr>
+					<td><?php echo $mostrar['id_alimento'] ?></td>
+					<td><?php echo $mostrar['nombre'] ?></td>
+					<td><?php echo $mostrar['tipo'] ?></td>
+					<td><?php echo $mostrar['provedor'] ?></td>
+          <td><?php echo $mostrar['precio'] ?></td>
+          <td><?php echo $mostrar['existencias'] ?></td>
+          <td><?php echo $mostrar['fecha_vencimiento'] ?></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+				</tr>
+				<?php 
+				}
+				 ?>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
+
+
 <script>
   // Agregar un evento change al elemento select
   document.getElementById("menu").addEventListener("change", function() {
@@ -231,9 +368,6 @@ require ('../includes/conexion.php')
     document.getElementById(opcion).style.display = "block";
   });
 </script>
-
-  
-
 
 
 <!-- Opcion de editar tienda -->
@@ -353,7 +487,8 @@ require ('../includes/conexion.php')
     </div>
   </div>
 </div>
-<script src="funciones.js"></script>
+
+<!-- EMPLEADOS -->
 <!-- Opcion de editar empleado -->
 <div class="modal fade" id="editar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -409,15 +544,109 @@ require ('../includes/conexion.php')
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="boton" id="editar_empleados">Aceptar</button>
+        <button type="button" class="boton" id="editar_empleados_boton">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
-<script src="funciones_empleados/funciones_empleados.js"></script>
+
+<!-- Opcion de agregar empleado -->
+<div class="modal fade" id="agregar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar empleado</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_empleados_agg">
+
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo Empleado:</label>
+            <input type="text" class="form-control" id="tipo_empleado_agg" name="tipo_empleado_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_empleado_agg" name="nombre_empleado_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="email_empleado_agg" name="email_empleado_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Sexo:</label>
+            <input type="text" class="form-control" id="sexo_empleado_agg" name="sexo_empleado_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero:</label>
+            <input type="text" class="form-control" id="numero_empleado_agg" name="numero_empleado_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Edad:</label>
+            <input type="text" class="form-control" id="edad_empleado_agg" name="edad_empleado_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Direccion:</label>
+            <input type="text" class="form-control" id="direccion_empleado_agg" name="direccion_empleado_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Contraseña:</label>
+            <input type="text" class="form-control" id="contraseña_empleado_agg" name="contraseña_empleado_agg">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="agregar_empleados_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Opcion de eliminar tienda-->
+<div class="modal fade" id="eliminar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este empleado?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_empleados_eli">
+
+          <div class="mb-3">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli_emple" name="id_eli_emple" readonly>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="pro_eli_emple" name="pro_eli_emple" readonly>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="boton" id="eliminar_empleados_boton">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="funciones.js"></script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 

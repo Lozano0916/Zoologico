@@ -1,3 +1,5 @@
+//////////////TIENDA///////////////////////
+
 //Editar productos a la tienda
 function editar(arreglo) {
     cadena=arreglo.split(',');
@@ -79,3 +81,96 @@ $('#eliminar_tienda').click(function () {
         }
     })
 }); 
+
+//////////////EMPLEADOS///////////////////////
+
+//editar empleados
+function editar_emp(arreglo2) {
+    cadena = arreglo2.split(',');
+
+    $("#id_empleado").val(cadena[0]);
+    $("#tipo_empleado").val(cadena[1]);
+    $("#nombre_empleado").val(cadena[2]);
+    $("#email_empleado").val(cadena[3]);
+    $("#sexo_empleado").val(cadena[4]);
+    $("#numero_empleado").val(cadena[5]);
+    $("#edad_empleado").val(cadena[6]);
+    $("#direccion_empleado").val(cadena[7]);
+}
+$('#editar_empleados_boton').click(function () {
+    var recolectar = $('#for_empleados_agg').serialize();
+    alert(recolectar);
+    $.ajax({
+        url: 'funciones_empleados/empleados_edit.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable) {
+            alert(variable);
+            $('#empleados').load('admin.php #empleados');
+            $('#editar_empleados').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+        }
+    })
+
+});
+
+//Agregar empleados
+$('#agregar_empleados_boton').click(function () {
+    var recolectar = $('#for_empleados_agg').serialize();
+
+    $.ajax({
+        url: 'funciones_empleados/empleados_agg.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            $('#empleados').load('admin.php #empleados');
+            $('#agregar_empleados').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+
+            $('#tipo_empleado_agg').val("");
+            $('#nombre_empleado_agg').val("");
+            $('#email_empleado_agg').val("");
+            $('#sexo_empleado_agg').val("");
+            $('#numero_empleado_agg').val("");
+            $('#edad_empleado_agg').val("");
+            $('#direccion_empleado_agg').val("");
+            $('#contraseña_empleado_agg').val("");
+        
+        }
+    })
+});
+
+//Eliminar empleados
+function eliminar_emp(arreglo2) {
+    cadena = arreglo2.split(',');
+
+    $("#id_eli_emple").val(cadena[0]);
+    $("#pro_eli_emple").val(cadena[2]);
+    alert(cadena);
+}
+$('#eliminar_empleados_boton').click(function () {
+    var recolectar = $('#for_empleados_eli').serialize();
+    $.ajax({
+        url: 'funciones_empleados/empleados_eliminar.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            $('#empleados').load('admin.php #empleados');
+            $('#eliminar_empleados').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+        }
+    })
+}); 
+
+//////////////MEDICAMENTOS///////////////////////
