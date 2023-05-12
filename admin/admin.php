@@ -74,6 +74,7 @@ require ('../includes/conexion.php')
 <!-- tablas -->    
 <!-- Tienda -->    
 <div id="option1" class="opciones">
+  <br><br>
 <center><h1>Tienda</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
 <button type="button" data-bs-toggle="modal" data-bs-target="#agregar" class="boton">Agregar</button>
@@ -172,7 +173,7 @@ require ('../includes/conexion.php')
 <div id="option3" class="opciones" style="display:none;">
 <center><h1>Medicamentos</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
-<div id="tienda">
+<div id="medicamentos">
 	<div class="table">
 		<table>
 			<thead>
