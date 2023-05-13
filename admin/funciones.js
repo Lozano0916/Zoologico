@@ -175,6 +175,7 @@ $('#eliminar_empleados_boton').click(function () {
 
 //////////////MEDICAMENTOS///////////////////////
 
+//Agregar medicamentos
 function editar_med(arreglo3) {
     cadena = arreglo3.split(',');
     alert(arreglo3);
@@ -235,3 +236,12 @@ $('#agregar_medic_boton').click(function () {
         }
     })
 });
+
+//Eliminar medicamentos
+function eliminar_med(arreglo3) {
+    cadena = arreglo3.split(',');
+
+    $("#id_eli_emple").val(cadena[0]);
+    $("#pro_eli_emple").val(cadena[1]);
+    alert(cadena);
+}

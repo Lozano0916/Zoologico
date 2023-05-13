@@ -38,7 +38,7 @@ require ('../includes/conexion.php')
         </button>
         <button>
           <span>
-            <i class="fa-light fa-table-tree" style="color: #ffffff;"></i>
+            <i class="fa-light fa-table" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
             <option value="option2">Empleados</option>
             <option value="option3">Medicamentos</option>
@@ -261,7 +261,7 @@ require ('../includes/conexion.php')
 		</table>
 	</div>
   </div>
-</div>
+</div> 
 
 <!-- Animales -->    
 <div id="option5" class="opciones" style="display:none;">
@@ -749,6 +749,36 @@ require ('../includes/conexion.php')
       </div>
       <div class="modal-footer">
         <button type="button" class="boton" id="agregar_medic_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de eliminar medicamentos -->
+<div class="modal fade" id="eliminar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este empleado?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_empleados_eli">
+
+          <div class="mb-3">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli_emple" name="id_eli_emple" readonly>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="pro_eli_emple" name="pro_eli_emple" readonly>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="boton" id="eliminar_empleados_boton">Eliminar</button>
       </div>
     </div>
   </div>
