@@ -120,6 +120,7 @@ require ('../includes/conexion.php')
 
 <!-- Empleados -->    
 <div id="option2" class="opciones" style="display:none;">
+<br><br>
 <center><h1>Empleados</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
 <button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
@@ -171,8 +172,10 @@ require ('../includes/conexion.php')
 
 <!-- Medicamentos -->    
 <div id="option3" class="opciones" style="display:none;">
+<br><br>
 <center><h1>Medicamentos</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_medicamentos" class="boton">Agregar</button>
 <div id="medicamentos">
 	<div class="table">
 		<table>
@@ -194,6 +197,7 @@ require ('../includes/conexion.php')
 				$sql="SELECT * from medicamentos";
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
+          $arreglo3 = $mostrar['id_medicamento'].','.$mostrar['nombre'].','.$mostrar['laboratorio'].','.$mostrar['existencias'].','.$mostrar['fecha_vencimiento'].','.$mostrar['fecha_compra'].','.$mostrar['lote'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_medicamento'] ?></td>
@@ -203,8 +207,8 @@ require ('../includes/conexion.php')
           <td><?php echo $mostrar['fecha_vencimiento'] ?></td>
           <td><?php echo $mostrar['fecha_compra'] ?></td>
           <td><?php echo $mostrar['lote'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_med" class="boton" onclick="editar_med('<?php echo $arreglo3?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_med" class="boton" onclick="eliminar_med('<?php echo $arreglo3?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
 				</tr>
 				<?php 
 				}
@@ -641,7 +645,114 @@ require ('../includes/conexion.php')
   </div>
 </div>
 
+<!-- MEDICAMENTOS -->
+<!-- Opcion de editar medicamentos -->
+<div class="modal fade" id="editar_med" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar medicamentos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_med_edit">
 
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_medic" name="id_medic" readonly>
+          </div>
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_medicamento" name="nombre_medicamento">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Laboratorio:</label>
+            <input type="text" class="form-control" id="laboratorio_" name="laboratorio_">
+          </div>
+
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Existencias:</label>
+            <input type="text" class="form-control" id="existencias_med" name="existencias_med">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de vencimiento:</label>
+            <input type="date" class="form-control" id="fecha_vencimi" name="fecha_vencimi">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de compra:</label>
+            <input type="date" class="form-control" id="fecha_compr" name="fecha_compr">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Lote:</label>
+            <input type="text" class="form-control" id="lote_med" name="lote_med">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="editar_medica_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de agregar medicamentos -->
+<div class="modal fade" id="agregar_medicamentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar medicamentos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_medic_agg">
+
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_medic_agg" name="nombre_medic_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Laboratorio:</label>
+            <input type="text" class="form-control" id="laboratorio_medic_agg" name="laboratorio_medic_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Existencias:</label>
+            <input type="text" class="form-control" id="existencias_medic_agg" name="existencias_medic_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de vencimiento:</label>
+            <input type="date" class="form-control" id="fecha_vencimi_agg" name="fecha_vencimi_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de compra:</label>
+            <input type="date" class="form-control" id="fecha_compr_agg" name="fecha_compr_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Lote:</label>
+            <input type="text" class="form-control" id="lote_med_agg" name="lote_med_agg">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="agregar_medic_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script src="funciones.js"></script>
