@@ -222,9 +222,10 @@ require ('../includes/conexion.php')
 
 <!-- recintos -->    
 <div id="option4" class="opciones" style="display:none;">
+<br><br>
 <center><h1>Recintos</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_recinto" class="boton">Agregar</button>
 <div id="recintos">
 	<div class="table">
 		<table>
@@ -244,15 +245,15 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+          $arreglo4 = $mostrar['id_recintos'].','.$mostrar['id_tipo'].','.$mostrar['n_animales'].','.$mostrar['estado'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_recintos'] ?></td>
-					<td><?php echo $mostrar['id_recinto'] ?></td>
+					<td><?php echo $mostrar['id_tipo'] ?></td>
 					<td><?php echo $mostrar['n_animales'] ?></td>
 					<td><?php echo $mostrar['estado'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_recintos" class="boton" onclick="editar_rec('<?php echo $arreglo4?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_recintos" class="boton" onclick="eliminar_rec('<?php echo $arreglo4?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
 				</tr>
 				<?php 
 				}
@@ -265,10 +266,11 @@ require ('../includes/conexion.php')
 
 <!-- Animales -->    
 <div id="option5" class="opciones" style="display:none;">
+<br><br>
 <center><h1>Animales</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
-<div id="recintos">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_animales" class="boton">Agregar</button>
+<div id="animales">
 	<div class="table">
 		<table>
 			<thead>
@@ -287,15 +289,15 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_animales'] ?></td>
 					<td><?php echo $mostrar['nombre'] ?></td>
 					<td><?php echo $mostrar['especie'] ?></td>
 					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -309,10 +311,11 @@ require ('../includes/conexion.php')
 
 <!-- alimentos -->    
 <div id="option6" class="opciones" style="display:none;">
+<br><br>
 <center><h1>Alimentos</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_empleados" class="boton">Agregar</button>
-<div id="recintos">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_alimentos" class="boton">Agregar</button>
+<div id="alimentos">
 	<div class="table">
 		<table>
 			<thead>
@@ -334,7 +337,7 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-          //$arreglo2 = $mostrar['id_empleado'].','.$mostrar['id_tipo_empleado'].','.$mostrar['nombre'].','.$mostrar['email'].','.$mostrar['sexo'].','.$mostrar['numero_telefonico'].','.$mostrar['edad'].','.$mostrar['direccion'];
+          $arreglo6 = $mostrar['id_alimento'].','.$mostrar['nombre'].','.$mostrar['tipo'].','.$mostrar['provedor'].','.$mostrar['precio'].','.$mostrar['existencias'].','.$mostrar['fecha_vencimiento'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_alimento'] ?></td>
@@ -344,8 +347,8 @@ require ('../includes/conexion.php')
           <td><?php echo $mostrar['precio'] ?></td>
           <td><?php echo $mostrar['existencias'] ?></td>
           <td><?php echo $mostrar['fecha_vencimiento'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_empleados" class="boton" onclick="editar_rec('')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_empleados" class="boton"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_alimentos" class="boton" onclick="editar_ali('<?php echo $arreglo6?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_alimentos" class="boton" onclick="editar_ali('<?php echo $arreglo6?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -421,7 +424,6 @@ require ('../includes/conexion.php')
   </div>
 </div>
 
-
 <!-- Opcion de agregar tienda-->
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -461,7 +463,6 @@ require ('../includes/conexion.php')
     </div>
   </div>
 </div>
-
 
 <!-- Opcion de eliminar tienda-->
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -513,7 +514,11 @@ require ('../includes/conexion.php')
           
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Tipo Empleado:</label>
-            <input type="text" class="form-control" id="tipo_empleado" name="tipo_empleado">
+            <select class="form-select form-control" name="tipo_empleado" id="tipo_empleado">
+              <option value="1">1.Administrador</option>
+              <option value="2">2.Medico</option>
+              <option value="3">3.Cuidador</option>
+            </select>
           </div>
 
           <div class="mb-3">
@@ -569,7 +574,11 @@ require ('../includes/conexion.php')
           
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Tipo Empleado:</label>
-            <input type="text" class="form-control" id="tipo_empleado_agg" name="tipo_empleado_agg">
+            <select class="form-select form-control" name="tipo_empleado_agg" id="tipo_empleado_agg">
+              <option value="1">1.Administrador</option>
+              <option value="2">2.Medico</option>
+              <option value="3">3.Cuidador</option>
+            </select>
           </div>
 
           <div class="mb-3">
@@ -755,7 +764,7 @@ require ('../includes/conexion.php')
 </div>
 
 <!-- Opcion de eliminar medicamentos -->
-<div class="modal fade" id="eliminar_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminar_med" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -763,26 +772,390 @@ require ('../includes/conexion.php')
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="for_empleados_eli">
+        <form id="for_medica_eli">
 
           <div class="mb-3">
             <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="id_eli_emple" name="id_eli_emple" readonly>
+            <input type="text" class="form-control" id="id_eli_medic" name="id_eli_medic" readonly>
           </div>
           <br>
           <div class="mb-3">
             <label for="recipient-name" id="pro_eli_label" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="pro_eli_emple" name="pro_eli_emple" readonly>
+            <input type="text" class="form-control" id="eli_medica" name="eli_medica" readonly>
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button"  class="boton" id="eliminar_empleados_boton">Eliminar</button>
+        <button type="button"  class="boton" id="eliminar_medica_boton">Eliminar</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- RECINTOS -->
+<!-- Opcion de editar recintos -->
+<div class="modal fade" id="editar_recintos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Recintos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_recin_edit">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_recin" name="id_recin" readonly>
+          </div>
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo recintos:</label>
+            <select class="form-select form-control" name="tipo_recin" id="tipo_recin">
+              <option value="1">1.Jaula</option>
+              <option value="2">2.Veterinaria</option>
+              <option value="3">3.Cuarto de baño</option>
+              <option value="4">4.Farmacia</option>
+              <option value="5">5.Deposito</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero recintos:</label>
+            <input type="text" class="form-control" id="n_recin" name="n_recin">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Estado:</label>
+            <input type="text" class="form-control" id="estado_recin" name="estado_recin">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="editar_recin_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de agregar recintos -->
+<div class="modal fade" id="agregar_recinto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Recintos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_recin_agg">
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo recintos:</label>
+            <select class="form-select form-control" name="tipo_recin_agg" id="tipo_recin_agg">
+              <option value="1">1.Jaula</option>
+              <option value="2">2.Veterinaria</option>
+              <option value="3">3.Cuarto de baño</option>
+              <option value="4">4.Farmacia</option>
+              <option value="5">5.Deposito</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero animales:</label>
+            <input type="text" class="form-control" id="n_recin_agg" name="n_recin_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Estado:</label>
+            <input type="text" class="form-control" id="estado_recin_agg" name="estado_recin_agg">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="agregar_recin_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de eliminar recinto -->
+<div class="modal fade" id="eliminar_recintos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este recinto?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_recinto_eli">
+
+          <div class="mb-3">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli_recin" name="id_eli_recin" readonly>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Estado:</label>
+            <input type="text" class="form-control" id="eli_estado" name="eli_estado" readonly>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="boton" id="eliminar_recinto_boton">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANIMALES -->
+<!-- Opcion de editar animales -->
+<div class="modal fade" id="editar_animales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Animales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_anim_edit">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_anim" name="id_anim" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_anim" name="nombre_anim">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Especie:</label>
+            <input type="text" class="form-control" id="especie_anim" name="especie_anim">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
+            <input type="text" class="form-control" id="n_ejemplares" name="n_ejemplares">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="editar_anim_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de agregar animales -->
+<div class="modal fade" id="agregar_animales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Animales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_anim_agg">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_anim_agg" name="nombre_anim_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Especie:</label>
+            <input type="text" class="form-control" id="especie_anim_agg" name="especie_anim_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
+            <input type="text" class="form-control" id="n_ejemplares_agg" name="n_ejemplares_agg">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="agregar_anim_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de eliminar animal -->
+<div class="modal fade" id="eliminar_animales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este animal?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_anim_eli">
+
+          <div class="mb-3">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli_anim" name="id_eli_anim" readonly>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="eli_nombre_anim" name="eli_nombre_anim" readonly>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="boton" id="eliminar_animal_boton">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIMENTOS -->
+<!-- Opcion de editar alimentos -->
+<div class="modal fade" id="editar_alimentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar alimentos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_alim_edit">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_alim" name="id_alim" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_alim" name="nombre_alim">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo:</label>
+            <input type="text" class="form-control" id="tipo_alim" name="tipo_alim">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Provedor:</label>
+            <input type="text" class="form-control" id="provedor_alim" name="provedor_alim">
+          </div>
+
+          
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Precio:</label>
+            <input type="text" class="form-control" id="precio_alim" name="precio_alim">
+          </div>
+
+          
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Existencias:</label>
+            <input type="text" class="form-control" id="existen_alim" name="existen_alim">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de vencimiento:</label>
+            <input type="text" class="form-control" id="fecha_alim" name="fecha_alim">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="editar_alim_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de agregar alimentos -->
+<div class="modal fade" id="agregar_alimentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar alimentos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_alim_agg">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre_alim_agg" name="nombre_alim_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tipo:</label>
+            <input type="text" class="form-control" id="tipo_alim_agg" name="tipo_alim_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Provedor:</label>
+            <input type="text" class="form-control" id="provedor_alim_agg" name="provedor_alim_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Precio:</label>
+            <input type="text" class="form-control" id="precio_alim_agg" name="precio_alim_agg">
+          </div>
+
+		      <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Existencias:</label>
+            <input type="text" class="form-control" id="existen_alim_agg" name="existen_alim_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de vencimiento:</label>
+            <input type="date" class="form-control" id="fecha_alim_agg" name="fecha_alim_agg">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="agregar_alim_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Opcion de eliminar alimentos -->
+<div class="modal fade" id="eliminar_alimentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas seguro de eliminar este alimento?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_alim_eli">
+
+          <div class="mb-3">
+            <label for="recipient-name" id="id_eli_label"class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="id_eli_alim" name="id_eli_alim" readonly>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="recipient-name" id="pro_eli_label" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="eli_nombre_alim" name="eli_nombre_alim" readonly>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="boton" id="eliminar_alimento_boton">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script src="funciones.js"></script>
