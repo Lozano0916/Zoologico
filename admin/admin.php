@@ -245,11 +245,11 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-          $arreglo4 = $mostrar['id_recintos'].','.$mostrar['id_tipo'].','.$mostrar['n_animales'].','.$mostrar['estado'];
+          $arreglo4 = $mostrar['id_recintos'].','.$mostrar['tipo'].','.$mostrar['n_animales'].','.$mostrar['estado'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_recintos'] ?></td>
-					<td><?php echo $mostrar['id_tipo'] ?></td>
+					<td><?php echo $mostrar['tipo'] ?></td>
 					<td><?php echo $mostrar['n_animales'] ?></td>
 					<td><?php echo $mostrar['estado'] ?></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_recintos" class="boton" onclick="editar_rec('<?php echo $arreglo4?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
@@ -1156,15 +1156,16 @@ require ('../includes/conexion.php')
 </div>
 
 
+
+
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script src="funciones.js"></script>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-
 <script src="https://kit.fontawesome.com/6e6a67c425.js" crossorigin="anonymous"></script>
 </body>
 </html>

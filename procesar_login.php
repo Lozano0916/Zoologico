@@ -18,6 +18,8 @@ $filas=mysqli_fetch_array($resultado);
          header("location: admin/admin.php");
       } else if($filas['id_tipo_empleado']==2){ //medico
          header("location: medic/medic.php");
+      }else if($filas['id_tipo_empleado']==3){ //cuidador
+         header("location: cuidador/cuidador.php");
       }
 }else {
    echo "<script>alert('Usuario o contraseña incorrectas'); window.location.href = 'Iniciosesion.html';</script>";
