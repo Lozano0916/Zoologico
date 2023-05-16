@@ -244,6 +244,7 @@ body {
 .table {
     border: solid 1px #1b492e;
     margin-top: 5%;
+    table-layout: auto;
 
 }
 

@@ -21,7 +21,7 @@ require ('../includes/conexion.php')
         <button>
           <span>
             <i class="fa-solid fa-house" style="color: #ffffff;"></i>
-            <span>Inicio</span>
+            <a href="#"><span>Inicio</span></a>
           </span>
         </button>
         <button>
@@ -30,10 +30,10 @@ require ('../includes/conexion.php')
             <span>Ventas</span>
           </span>
         </button>
-        <button>
+        <button onclick="estadisticas()">
           <span>
             <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
-            <a href="#"><span>Estadisticas</span></a>
+            <span>Estadisticas</span>
           </span>
         </button>
         <button>
@@ -48,27 +48,17 @@ require ('../includes/conexion.php')
             </select></span>
           </span>
         </button>
-        <button id="logout-button">
+        <button>
           <span>
             <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Cerrar sesion</span>
+            <a href="../logout.php"><span>Cerrar sesion</span></a>
           </span>
         </button>
       </nav>
     </aside>
 
-<!-- logout -->    
-<script>
-  var logoutButton = document.getElementById("logout-button");
-  var logoutLink = document.createElement("a");
-  logoutLink.href = "../logout.php";
-  logoutLink.style.display = "none";
-  document.body.appendChild(logoutLink);
+<!-- logout -->
 
-  logoutButton.onclick = function() {
-    logoutLink.click();
-  };
-</script>
 
 
 <!-- tablas -->    
@@ -565,7 +555,7 @@ require ('../includes/conexion.php')
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar empleado</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -940,7 +930,7 @@ require ('../includes/conexion.php')
 
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
-            <input type="text" class="form-control" id="n_ejemplares" name="n_ejemplares">
+            <input type="number" class="form-control" id="n_ejemplares" name="n_ejemplares">
           </div>
 
         </form>
@@ -975,7 +965,7 @@ require ('../includes/conexion.php')
 
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
-            <input type="text" class="form-control" id="n_ejemplares_agg" name="n_ejemplares_agg">
+            <input type="number" class="form-control" id="n_ejemplares_agg" name="n_ejemplares_agg">
           </div>
 
         </form>
@@ -1052,18 +1042,18 @@ require ('../includes/conexion.php')
           
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="precio_alim" name="precio_alim">
+            <input type="number" class="form-control" id="precio_alim" name="precio_alim">
           </div>
 
           
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Existencias:</label>
-            <input type="text" class="form-control" id="existen_alim" name="existen_alim">
+            <input type="number" class="form-control" id="existen_alim" name="existen_alim">
           </div>
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Fecha de vencimiento:</label>
-            <input type="text" class="form-control" id="fecha_alim" name="fecha_alim">
+            <input type="date" class="form-control" id="fecha_alim" name="fecha_alim">
           </div>
 
         </form>
@@ -1103,12 +1093,12 @@ require ('../includes/conexion.php')
 
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="precio_alim_agg" name="precio_alim_agg">
+            <input type="number" class="form-control" id="precio_alim_agg" name="precio_alim_agg">
           </div>
 
 		      <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Existencias:</label>
-            <input type="text" class="form-control" id="existen_alim_agg" name="existen_alim_agg">
+            <input type="number" class="form-control" id="existen_alim_agg" name="existen_alim_agg">
           </div>
 
           <div class="mb-3">
@@ -1157,8 +1147,7 @@ require ('../includes/conexion.php')
 
 
 
-
-
+<div id="estadisticas"></div>
 
 
 
