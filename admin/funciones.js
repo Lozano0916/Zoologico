@@ -9,6 +9,7 @@ function editar(arreglo) {
     $("#descripcion_").val(cadena[2]);
     $("#precio_").val(cadena[3]);
     $("#imagen_").val(cadena[4]);
+    $("#cantidad_").val(cadena[5]);
 }
 
 $('#editar_tienda').click(function() {
@@ -52,6 +53,7 @@ $('#agregar_tienda').click(function () {
             $('#descripcion_gg').val("");
             $('#precio_gg').val("");
             $('#imagen_gg').val("");
+            $('#cantidad_gg').val("");
         }
     })
 });
@@ -508,6 +510,7 @@ $('#eliminar_alimento_boton').click(function () {
 ///////////////ESTADISTICAS/////////////////
 
 function estadisticas() {
+    document.getElementById('option1').style.display = 'none';
     $.get('graficos/graficos.php',function (mensaje,estado) {
 
         document.getElementById('estadisticas').innerHTML=mensaje;

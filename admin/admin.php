@@ -36,7 +36,7 @@ require ('../includes/conexion.php')
             <span>Estadisticas</span>
           </span>
         </button>
-        <button>
+        <button id="menu">
           <span>
             <i class="fa-light fa-table" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
@@ -77,6 +77,7 @@ require ('../includes/conexion.php')
 				<td>Nombre</td>
 				<td>Descripcion</td>
 				<td>Precio</td>
+        <td>cantidad</td>	
 				<td>imagen</td>
 				<td>Editar</td>
 				<td>Eliminar</td>
@@ -88,13 +89,14 @@ require ('../includes/conexion.php')
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-					$arreglo = $mostrar['id_producto'].','.$mostrar['nombre'].','.$mostrar['descripcion'].','.$mostrar['precio'].','.$mostrar['imagen'];
+					$arreglo = $mostrar['id_producto'].','.$mostrar['nombre'].','.$mostrar['descripcion'].','.$mostrar['precio'].','.$mostrar['imagen'].','.$mostrar['cantidad'];
 				 ?>
 				<tr>
 					<td><?php echo $mostrar['id_producto'] ?></td>
 					<td><?php echo $mostrar['nombre'] ?></td>
 					<td><?php echo $mostrar['descripcion'] ?></td>
 					<td><?php echo $mostrar['precio'] ?></td>
+          <td><?php echo $mostrar['cantidad'] ?></td>
 					<td><img src="<?php echo $mostrar['imagen'] ?>"   height=100px ></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar" class="boton" onclick="editar('<?php echo $arreglo?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar" class="boton" onclick="eliminar('<?php echo $arreglo?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></td>
@@ -397,14 +399,18 @@ require ('../includes/conexion.php')
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="precio_" name="precio_">
+            <input type="number" class="form-control" id="precio_" name="precio_">
           </div>
 
-		  <div class="mb-3">
+		    <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Imagen:</label>
             <input type="text" class="form-control" id="imagen_" name="imagen_">
           </div>
 
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Cantiadad:</label>
+            <input type="number" class="form-control" id="cantidad_" name="cantidad_">
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -437,7 +443,7 @@ require ('../includes/conexion.php')
 
 		  <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="precio_gg" name="precio_gg">
+            <input type="number" class="form-control" id="precio_gg" name="precio_gg">
           </div>
 
 		  <div class="mb-3">
@@ -445,6 +451,11 @@ require ('../includes/conexion.php')
             <input type="text" class="form-control" id="imagen_gg" name="imagen_gg">
           </div>
 
+          
+		  <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad_gg" name="cantidad_gg">
+          </div>
         </form>
       </div>
       <div class="modal-footer">

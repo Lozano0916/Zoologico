@@ -274,7 +274,12 @@ tbody tr {
 tbody tr:hover {
     background: #FFF8DE;
 }
-
+@media (width < 580px) {
+  table{
+    width: 100%;
+    table-layout: auto;
+  }
+}
 
 /***********************/
 
