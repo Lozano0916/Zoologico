@@ -68,9 +68,9 @@
     			<tr>
     				<td>Id recinto</td>
     				<td>Tipo recinto</td>
-    				<td>Numero animales</td>
+    				<td>Animal</td>
     				<td>Estado</td>
-                    <td>Uso</td>
+            <td>Uso</td>
     			</tr>
     			</thead>
     			<tbody>
@@ -162,7 +162,6 @@
         <td>Existencias</td>
         <td>Fecha vcto</td>
         <td>Editar</td>
-        <td>Eliminar</td>
 			</tr>
 			</thead>
 			<tbody>
@@ -182,7 +181,6 @@
           <td><?php echo $mostrar['existencias'] ?></td>
           <td><?php echo $mostrar['fecha_vencimiento'] ?></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_alimentos" class="boton" onclick="editar_ali('<?php echo $arreglo6?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_alimentos" class="boton" onclick="editar_ali('<?php echo $arreglo6?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
 				<?php 
 				}
@@ -210,8 +208,9 @@
           </div>
           
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Numero Animales:</label>
-            <input type="number" class="form-control" id="n_recin" name="n_recin">
+            <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
+            <input type="text" class="form-control" id="n_recin" name="n_recin">
+            <ul id="animallist"></ul>
           </div>
 
 		    <div class="mb-3">

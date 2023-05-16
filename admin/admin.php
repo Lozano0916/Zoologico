@@ -30,13 +30,13 @@ require ('../includes/conexion.php')
             <span>Ventas</span>
           </span>
         </button>
-        <button onclick="estadisticas()">
+        <button>
           <span>
             <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
             <span>Estadisticas</span>
           </span>
         </button>
-        <button id="menu">
+        <button>
           <span>
             <i class="fa-light fa-table" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
@@ -57,10 +57,9 @@ require ('../includes/conexion.php')
       </nav>
     </aside>
 
-<!-- logout -->
+<!-- barra de busqueda -->
 
-
-
+ 
 <!-- tablas -->    
 <!-- Tienda -->    
 <div id="option1" class="opciones">
@@ -1158,7 +1157,6 @@ require ('../includes/conexion.php')
 
 
 
-<div id="estadisticas"></div>
 
 
 

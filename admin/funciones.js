@@ -506,13 +506,3 @@ $('#eliminar_alimento_boton').click(function () {
         }
     })
 });
-
-///////////////ESTADISTICAS/////////////////
-
-function estadisticas() {
-    document.getElementById('option1').style.display = 'none';
-    $.get('graficos/graficos.php',function (mensaje,estado) {
-
-        document.getElementById('estadisticas').innerHTML=mensaje;
-    })
-}
