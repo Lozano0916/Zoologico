@@ -31,7 +31,7 @@ body {
     margin-right: 10px;
 }
 .line_animation {
-    color: white;
+    color: black;
     font-size: 15px;
     background-image: linear-gradient(90deg, #218249, #1b492e, #218249);
     text-decoration: none;
@@ -66,7 +66,7 @@ h1.line_animation {
     text-align: center;
 } .textos-header h1 {
     font-size: 50px;
-    color: white;
+    color: black;
 
 } 
 
@@ -141,7 +141,7 @@ footer {
     font-size: 30px;
     font-weight: 300;
 
-    color: white;
+    color: black;
 } .contenedor-sobre-nosotros {
     display: flex;
     justify-content: space-evenly;
@@ -207,7 +207,7 @@ footer {
     display: flex;
     justify-content: space-evenly;
 } .cards .card{
-    background: rgb(74, 74, 160);
+    background: #1b492e;
     display: flex;
     width: 46%;
     height: 200px;

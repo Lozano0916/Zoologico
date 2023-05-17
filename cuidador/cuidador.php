@@ -26,10 +26,9 @@
         </button>
         <button>
           <span>
-            <i class="fa-light fa-table" style="color: #ffffff;"></i>
+            <i class="fa-solid fa-server" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Recintos</option>
-            <option value="option2">Animales</option>
-            <option value="option3">Alimentos</option>
+            <option value="option2">Alimentos</option>
             </select></span>
           </span>
         </button>
@@ -98,57 +97,13 @@
       </div>
     </div> 
 
-<!-- Animales  -->   
-<div id="option2" class="opciones" style="display:none;">
-<br><br>
-<center><h1>Animales</h1></center>
-<hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_animales" class="boton">Agregar</button>
-<div id="animales">
-	<div class="table">
-		<table>
-			<thead>
-			<tr>
-				<td>Id animales</td>
-				<td>Nombre</td>
-				<td>Especie</td>
-				<td>Numero ejemplares</td>
-        <td>Editar</td>
-        <td>Eliminar</td>
-			</tr>
-			</thead>
-			<tbody>
-				<?php 
-				$sql="SELECT * from animales";
-				$result=mysqli_query($conn,$sql);
-				while($mostrar=mysqli_fetch_array($result)){
-
-          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
-				 ?>
-				<tr>
-					<td><?php echo $mostrar['id_animales'] ?></td>
-					<td><?php echo $mostrar['nombre'] ?></td>
-					<td><?php echo $mostrar['especie'] ?></td>
-					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
-				</tr>
-				<?php 
-				}
-				 ?>
-			</tbody>
-		</table>
-	</div>
-  </div>
-</div>
-
-
 <!-- alimentos   --> 
-<div id="option3" class="opciones" style="display:none;">
+<div id="option2" class="opciones" style="display:none;">
 <br><br>
 <center><h1>Alimentos</h1></center>
 <hr style="border: none; border-top: 1px solid black;">
 <button type="button" data-bs-toggle="modal" data-bs-target="#agregar_alimentos" class="boton">Agregar</button>
+<button type="button" data-bs-toggle="modal" data-bs-target="#utilizar_alimentos" class="boton">Usar</button>
 <div id="alimentos">
 	<div class="table">
 		<table>
@@ -196,7 +151,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Recintos</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Utilizar recintos</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -230,6 +185,42 @@
   </div>
 </div>
 
+<!-- Opcion de editar reducir alimentos -->
+<div class="modal fade" id="utilizar_alimentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Utilizar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="id_alimento" class="col-form-label">Alimento:</label>
+          <select class="form-control" id="id_alimento" name="id_alimento">
+            <?php
+              // Consultar la lista de alimentos desde la base de datos
+              $query = "SELECT id_alimento, nombre FROM alimentos";
+              $result = $conn->query($query);
+
+              // Generar las opciones del menú desplegable
+              while ($row = $result->fetch_assoc()) {
+                $alimentoId = $row['id_alimento'];
+                $alimentoNombre = $row['nombre'];
+                echo "<option value='$alimentoId'>$alimentoNombre</option>";
+              }
+            ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="restar_cantidad" class="col-form-label">Cantidad:</label>
+          <input type="number" class="form-control" id="restar_cantidad" name="restar_cantidad">
+        </div>
+        <div class="modal-footer">
+        <button class="boton" onclick="restarCantidad()">Utilizar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="funciones.js"></script>
 

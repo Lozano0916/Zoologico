@@ -31,27 +31,24 @@ $('#ocupar_recin_boton').click(function () {
 });
 
 
-$(document).ready(function () {
-    $('#n_recin').on('input', function () {
-        var searchTerm = $(this).val();
+function restarCantidad() {
+    // Obtener el valor del alimento seleccionado y la cantidad ingresada
+    var alimentoId = document.getElementById('id_alimento').value;
+    var cantidad = parseInt(document.getElementById('restar_cantidad').value);
 
-        $.ajax({
-            url: 'busqueda_animal.php', // Archivo PHP que realiza la búsqueda en la base de datos
-            method: 'POST',
-            dataType: 'json',
-            data: { searchTerm: searchTerm },
-            success: function (data) {
-                var animalList = $('#animallist');
-                animalList.empty();
-
-                if (data.length > 0) {
-                    data.forEach(function (animal) {
-                        animalList.append('<li data-animal-id="' + animal.id + '">' + animal.nombre + '</li>');
-                    });
-                } else {
-                    animalList.append('<li>No se encontraron animales.</li>');
-                }
-            }
-        });
+    // Enviar el alimento y la cantidad al servidor mediante una petición AJAX
+    $.ajax({
+        url: 'funciones/alimentos/restar_cantidad.php', // Archivo PHP que restará la cantidad en la base de datos
+        method: 'POST',
+        data: { alimentoId: alimentoId, cantidad: cantidad },
+        success: function (response) {
+            alert(response);
+            // Mostrar una notificación de éxito o realizar otras acciones necesaria
+            $('#alimentos').load('cuidador.php #alimentos');
+            $('#utilizar_alimentos').modal('hide');
+        },
+        error: function () {
+            // Manejar el error, mostrar un mensaje de error, etc.
+        }
     });
-});
+}

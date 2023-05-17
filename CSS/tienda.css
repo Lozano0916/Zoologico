@@ -79,5 +79,9 @@ nav.navbar:hover{
 
 /* Estilo del fondo */
 ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+    background-color: transparent;
+}
+.row{
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
 }

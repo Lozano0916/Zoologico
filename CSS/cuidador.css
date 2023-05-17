@@ -222,7 +222,7 @@
 
 /* Estilos del foco del ícono */
 .tablas_menu:focus:after {
-    color: #FFF8DE;
+    color: transparent;
 }
 
 .opciones {
