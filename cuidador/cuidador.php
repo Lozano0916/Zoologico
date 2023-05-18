@@ -161,12 +161,24 @@
             <label for="recipient-name" class="col-form-label">Id:</label>
             <input type="text" class="form-control" id="id_recin" name="id_recin" readonly>
           </div>
-          
+
           <div class="mb-3">
-            <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
-            <input type="text" class="form-control" id="n_recin" name="n_recin">
-            <ul id="animallist"></ul>
-          </div>
+          <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
+          <select class="form-control" id="n_recin" name="n_recin">
+            <?php
+              // Consultar la lista de alimentos desde la base de datos
+              $query = "SELECT id_animales, nombre FROM animales";
+              $result = $conn->query($query);
+
+              // Generar las opciones del menú desplegable
+              while ($row = $result->fetch_assoc()) {
+                $alimentoId = $row['id_animales'];
+                $alimentoNombre = $row['nombre'];
+                echo "<option value='$alimentoId'>$alimentoNombre</option>";
+              }
+            ?>
+          </select>
+        </div>
 
 		    <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Estado:</label>
@@ -175,7 +187,6 @@
                     <option value="libre">Libre</option>
             </select>
           </div>
-
         </form>
       </div>
       <div class="modal-footer">

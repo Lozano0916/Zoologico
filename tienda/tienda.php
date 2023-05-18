@@ -64,6 +64,11 @@ $resultado = $conn->query($sql);
           <h2><?php echo $row['nombre']; ?></h2>
           <p><?php echo $row['descripcion']; ?></p>
           <span class="precio">$<?php echo $row['precio']; ?></span>
+        <div class="cantidad_container">
+          <input type="number" class="cantidad_input" name="cantidad" value="1">
+          <button class="cantidad_btn_mas">+</button>
+          <button class="cantidad_btn_menos">-</button>
+        </div>
           <br><button class="boton">Comprar</button>
         </div> 
       <?php endwhile; ?>
@@ -71,6 +76,35 @@ $resultado = $conn->query($sql);
       <p>No se encontraron productos</p>
     <?php endif; ?>
   </div>
+
+
+<script>
+  // Obtener todos los elementos con la clase "cantidad-container"
+  var cantidadContainers = document.getElementsByClassName("cantidad_container");
+
+  // Iterar sobre cada "cantidad-container" para agregar la funcionalidad a los botones
+  for (var i = 0; i < cantidadContainers.length; i++) {
+    var container = cantidadContainers[i];
+    var input = container.getElementsByClassName("cantidad_input")[0];
+    var botonMas = container.getElementsByClassName("cantidad_btn_mas")[0];
+    var botonMenos = container.getElementsByClassName("cantidad_btn_menos")[0];
+
+    // Escuchar el clic en el botón "+" y sumar 1 al valor del campo de entrada
+    botonMas.addEventListener("click", function() {
+      var valor = parseInt(input.value);
+      input.value = valor + 1;
+    });
+
+    // Escuchar el clic en el botón "-" y restar 1 al valor del campo de entrada si es mayor que 1
+    botonMenos.addEventListener("click", function() {
+      var valor = parseInt(input.value);
+      if (valor > 1) {
+        input.value = valor - 1;
+      }
+    });
+  }
+</script>
+
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
