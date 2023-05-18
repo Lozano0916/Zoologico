@@ -38,7 +38,7 @@ require ('../includes/conexion.php')
         </button>
         <button>
           <span>
-            <i class="fa-light fa-table" style="color: #ffffff;"></i>
+            <i class="fa-solid fa-server" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
             <option value="option2">Empleados</option>
             <option value="option3">Medicamentos</option>
