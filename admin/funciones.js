@@ -1,5 +1,4 @@
 //////////////TIENDA///////////////////////
-
 //Editar productos a la tienda
 function editar(arreglo) {
     cadena=arreglo.split(',');
@@ -505,4 +504,19 @@ $('#eliminar_alimento_boton').click(function () {
             $('.modal-backdrop').hide();
         }
     })
+});
+
+
+$(document).ready(function () {
+    $('#reportes_link').click(function (e) {
+        e.preventDefault(); 
+
+        $('.opciones').hide();
+        $.ajax({
+            url: 'reportes/reportes.php',
+            success: function (data) {
+                $('#reportes').html(data); 
+            }
+        });
+    });
 });

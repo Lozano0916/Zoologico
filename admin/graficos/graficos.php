@@ -75,3 +75,7 @@
 
 
 
+    <br>
+    <center><h1>Bandeja de Entrada de Informes</h1></center>
+
+

@@ -1,5 +1,7 @@
 <?php
-    require ('../includes/conexion.php')
+    require ('../includes/conexion.php');
+    date_default_timezone_set('America/Bogota'); 
+    $fecha_actual=date('Y-m-d H:i:s');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +24,12 @@
           <span>
             <i class="fa-solid fa-house" style="color: #ffffff;"></i>
             <span>Inicio</span>
+          </span>
+        </button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#reportes_cuidador">
+          <span> 
+            <i class="fa-solid fa-file-contract" style="color: #ffffff;"></i>
+            <span>Reportar</span>
           </span>
         </button>
         <button>
@@ -146,6 +154,60 @@
   </div>
 </div>
  
+<!-- Opcion de reportar  -->
+
+<div class="modal fade" id="reportes_cuidador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Realiza reporte</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="for_reporte">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id del cuidador:</label>
+            <input type="number" class="form-control" id="nom_repor" name="nom_repor">
+          </div>
+
+          <div class="mb-3">
+          <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
+          <select class="form-control" id="animal_re" name="animal_re">
+            <?php
+              // Consultar la lista de alimentos desde la base de datos
+              $query = "SELECT id_animales, nombre FROM animales";
+              $result = $conn->query($query);
+
+              // Generar las opciones del menú desplegable
+              while ($row = $result->fetch_assoc()) {
+                $alimentoId = $row['id_animales'];
+                $alimentoNombre = $row['nombre'];
+                echo "<option value='$alimentoId'>$alimentoNombre</option>";
+              }
+            ?>
+          </select>
+        </div>
+
+		    <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha y hora:</label>
+            <input type="datetime-local" class="form-control" id="fecha_act" name="fecha_act"  value="<?php echo $fecha_actual?>" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Contenido:</label>
+            <textarea class="form-control" id="contenido_repo" name="contenido_repo" cols="30" rows="10"></textarea>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton" id="reporte_boton">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Opcion de editar estado y numero animales de los recintos -->
 <div class="modal fade" id="editar_recintos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -190,12 +252,22 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="boton" id="ocupar_recin_boton">Aceptar</button>
+        <button type="button" class="boton" id="ocupar_recin_boton" onclick="estado_recinto()">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
 
+<script>
+  function estado_recinto() {
+    var estadoRecinSelect = document.getElementById("estado_recin");
+    var nRecinSelect = document.getElementById("n_recin");
+
+    if (estadoRecinSelect.value === "libre") {
+      nRecinSelect.value = "";
+    }
+  }
+</script>
 <!-- Opcion de editar reducir alimentos -->
 <div class="modal fade" id="utilizar_alimentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -232,6 +304,8 @@
     </div>
   </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="funciones.js"></script>
 

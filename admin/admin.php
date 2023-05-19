@@ -24,19 +24,19 @@ require ('../includes/conexion.php')
             <a href="#"><span>Inicio</span></a>
           </span>
         </button>
-        <button>
+        <button type="button" id="reportes_link">
           <span>
-            <i class="fa-solid fa-money-bill-trend-up" style="color: #ffffff;"></i>
-            <span>Ventas</span>
+            <i class="fa-solid fa-file-contract" style="color: #ffffff;"></i>
+            <span>Reportes</span>
           </span>
         </button>
-        <button>
+        <button >
           <span>
             <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
             <span>Estadisticas</span>
           </span>
         </button>
-        <button>
+        <button type="button" id="menu_des">
           <span>
             <i class="fa-solid fa-server" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Tienda</option>
@@ -1158,7 +1158,7 @@ require ('../includes/conexion.php')
 
 
 
-
+<div id="reportes"></div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
