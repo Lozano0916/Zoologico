@@ -1,3 +1,12 @@
+document.getElementById('reportes_link').addEventListener('click', function () {
+    document.getElementById('reportes').style.display = 'block';
+});
+
+document.getElementById('menu_des').addEventListener('click', function () {
+    document.getElementById('reportes').style.display = 'none';
+});
+
+
 //////////////TIENDA///////////////////////
 //Editar productos a la tienda
 function editar(arreglo) {
@@ -508,14 +517,14 @@ $('#eliminar_alimento_boton').click(function () {
 
 
 $(document).ready(function () {
-    $('#reportes_link').click(function (e) {
-        e.preventDefault(); 
-
+    $('#reportes_link').click(function () {
         $('.opciones').hide();
+
         $.ajax({
             url: 'reportes/reportes.php',
             success: function (data) {
                 $('#reportes').html(data); 
+                
             }
         });
     });

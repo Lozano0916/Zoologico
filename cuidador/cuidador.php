@@ -174,6 +174,7 @@
           <div class="mb-3">
           <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
           <select class="form-control" id="animal_re" name="animal_re">
+            <option value=""></option>
             <?php
               // Consultar la lista de alimentos desde la base de datos
               $query = "SELECT id_animales, nombre FROM animales";
