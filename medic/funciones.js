@@ -1,3 +1,11 @@
+document.getElementById('reportes_link').addEventListener('click', function () {
+    document.getElementById('reportes').style.display = 'block';
+});
+
+document.getElementById('menu_des').addEventListener('click', function () {
+    document.getElementById('reportes').style.display = 'none';
+});
+
 function editar_med(arreglo3) {
     cadena = arreglo3.split(',');
     alert(arreglo3);
@@ -139,4 +147,34 @@ $('#ocupar_medic_boton').click(function () {
         }
     })
 
+});
+
+//////////////REPORTES//////////////
+$(document).ready(function () {
+    $('#reportes_link').click(function () {
+        $('.opciones').hide();
+
+        $.ajax({
+            url: 'funciones/reportes/reportes.php',
+            success: function (data) {
+                $('#reportes').html(data);
+            }
+        });
+    });
+});
+
+
+//////////////CITAS//////////////
+$(document).ready(function () {
+    $('#').click(function () {
+        $('.opciones').hide();
+
+        $.ajax({
+            url: 'funciones/reportes/reportes.php',
+            success: function (data) {
+                alert(data);
+                $('#reportes').html(data);
+            }
+        });
+    });
 });

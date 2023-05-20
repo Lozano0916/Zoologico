@@ -30,10 +30,10 @@ require ('../includes/conexion.php');
             <span>Reportes</span>
           </span>
         </button>
-        <button type="button" id="estadisticas_link">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#citas_animal">
           <span>
-            <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
-            <span>Estadisticas</span>
+            <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i>
+            <span>Citas</span>
           </span>
         </button>
         <button type="button" id="menu_des">
@@ -41,7 +41,6 @@ require ('../includes/conexion.php');
             <i class="fa-solid fa-server" style="color: #ffffff;"></i>
             <span><select id="menu" class="tablas_menu"><option value="option1">Medicamentos</option>
             <option value="option2">Recintos</option>
-            <option value="option3">Animales</option>
             </select></span>
           </span>
         </button>
@@ -145,49 +144,6 @@ require ('../includes/conexion.php');
   </div>
 </div> 
 
-<!-- Animales -->    
-<div id="option3" class="opciones" style="display:none;">
-<br><br>
-<center><h1>Animales</h1></center>
-<hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_animales" class="boton">Agregar</button>
-<div id="animales">
-	<div class="table">
-		<table>
-			<thead>
-			<tr>
-				<td>Id animales</td>
-				<td>Nombre</td>
-				<td>Especie</td>
-				<td>Numero ejemplares</td>
-        <td>Editar</td>
-        <td>Eliminar</td>
-			</tr>
-			</thead>
-			<tbody>
-				<?php 
-				$sql="SELECT * from animales";
-				$result=mysqli_query($conn,$sql);
-				while($mostrar=mysqli_fetch_array($result)){
-
-          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
-				 ?>
-				<tr>
-					<td><?php echo $mostrar['id_animales'] ?></td>
-					<td><?php echo $mostrar['nombre'] ?></td>
-					<td><?php echo $mostrar['especie'] ?></td>
-					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
-				</tr>
-				<?php 
-				}
-				 ?>
-			</tbody>
-		</table>
-	</div>
-  </div>
-</div>
 
 <script>
   // Agregar un evento change al elemento select
@@ -443,23 +399,57 @@ require ('../includes/conexion.php');
   </div>
 </div>
 
+<!-- Opcion de citas -->
+<div class="modal fade" id="citas_animal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Utilizar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="id_medicamento" class="col-form-label">Medicamento:</label>
+          <select class="form-control" id="id_medicamento" name="id_medicamento">
+            <?php
+              // Consultar la lista de alimentos desde la base de datos
+              $query = "SELECT id_medicamento, nombre FROM medicamentos";
+              $result = $conn->query($query);
+
+              // Generar las opciones del menú desplegable
+              while ($row = $result->fetch_assoc()) {
+                $medicamentoId = $row['id_medicamento'];
+                $medicamentoNombre = $row['nombre'];
+                echo "<option value='$medicamentoId'>$medicamentoNombre</option>";
+              }
+            ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="restar_cantidad" class="col-form-label">Cantidad:</label>
+          <input type="number" class="form-control" id="restar_cantidad" name="restar_cantidad">
+        </div>
+        <div class="modal-footer">
+        <button class="boton" onclick="restarCantidad()">Utilizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="reportes"></div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="funciones.js"></script>
-
 <script>
-  // Agregar un evento change al elemento select
   document.getElementById("menu").addEventListener("change", function() {
-    // Obtener el valor de la opción seleccionada
     var opcion = this.value;
 
-    // Ocultar todas las opciones
     var opciones = document.getElementsByClassName("opciones");
     for (var i = 0; i < opciones.length; i++) {
       opciones[i].style.display = "none";
     }
 
-    // Mostrar la opción seleccionada
     document.getElementById(opcion).style.display = "block";
   });
 </script>
