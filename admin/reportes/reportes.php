@@ -1,7 +1,7 @@
 <?php
 // Realiza la conexión a la base de datos y ejecuta la consulta
     include('../../includes/conexion.php');
-    $query = "SELECT * FROM reportes";
+    $query = "SELECT * FROM reportes_admin";
     $result = $conn->query($query);
 ?>
 <!DOCTYPE html>
@@ -11,20 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
-    <style media="print">
-      /* Estilos de impresión */
-      .modal-dialog {
-        display: none !important; /* Oculta el diálogo modal en la versión impresa */
-      }
-
-      .modal-content {
-        width: 100%; /* Ajusta el ancho del contenido del modelo para ocupar toda la página impresa */
-      }
-
-      .modal-body:not(.text-center) {
-        display: none; /* Oculta cualquier contenido en el cuerpo del modelo que no sea el contenido principal */
-      }
-    </style>
 </head>
 <body>
     <br>
@@ -48,6 +34,7 @@
             $idInforme = $row['id'];
             $empleadoCuidador = $row['empleado'];
             $animalInforme = $row['animal'];
+            $lugarInforme = $row['lugar'];
             $fechaInforme = $row['fecha'];
             $contenidoInforme = $row['contenido'];
             $truncatedContent = truncateContent($contenidoInforme, 10);
@@ -80,6 +67,7 @@
                     <p id="informe_contenido"><?php  
                         echo "<strong>Empleado:</strong><br> $empleadoCuidador<br><br>";
                         echo "<strong>Animal:</strong><br> $animalInforme<br><br>";
+                        echo "<strong>Lugar:</strong><br> $lugarInforme<br><br>";
                         echo "<strong>Fecha:</strong><br> $fechaInforme<br><br>";
                         echo "<strong>Contenido:</strong><br>$contenidoInforme<br><br>";
                     ?></p>

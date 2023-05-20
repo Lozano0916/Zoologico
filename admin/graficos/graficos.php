@@ -1,3 +1,6 @@
+<?php 
+  require_once('../../includes/conexion.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,72 +13,61 @@
 </head>
 <body>
 
-<div class="col-lg-12" style="padding-top: 20px;">
-    <div class="card">
-      <h5 class="card-header">Graficos</h5>
-      <div class="card-body">
-        <div class="row">
-            <div class="col-lg-2">
-                <button class="btn btn-primary" onclick="cargar_estadis()">Estadisticas</button>
-            </div>
-            <canvas id="grafica"></canvas>
-        </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-</div>
+<?php
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js" integrity="sha512-TJ7U6JRJx5IpyvvO9atNnBzwJIoZDaQnQhb0Wmw32Rj5BQHAmJG16WzaJbDns2Wk5VG6gMt4MytZApZG47rCdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+$sql = "SELECT productos, SUM(productos_vendidos) as total FROM productos_ventas GROUP BY productos ORDER BY total DESC LIMIT 10";
+$result = $conn->query($sql);
 
-<script>
-  // Obtener el elemento canvas de la página
-  var ctx = document.getElementById('grafica').getContext('2d');
-
-  // Definir los datos de la gráfica
-  var data = {
-    labels: ['Estudiante 1', 'Estudiante 2', 'Estudiante 3', 'Estudiante 4'],
-    datasets: [
-      {
-        label: 'Grados',
-        data: [75, 82, 68, 91],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }
-    ]
-  };
-
-  // Configurar la gráfica
-  var options = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
+// Paso 3: Procesar los resultados
+$productos_mas_vendidos = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $producto = $row['productos'];
+        $cantidad_vendida = $row['total'];
+        $productos_mas_vendidos[] = array('producto' => $producto, 'productos_vendidos' => $cantidad_vendida);
     }
-  };
+}
 
-  // Crear la gráfica
-  var chart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: options
-  });
+// Paso 4: Cerrar la conexión a la base de datos
+$conn->close();
 
+// Paso 5: Generar la estadística
+echo "<h2>Productos más vendidos:</h2>";
+echo "<table>";
+echo "<tr><th>Producto</th><th>Cantidad Vendida</th></tr>";
+foreach ($productos_mas_vendidos as $producto) {
+    echo "<tr><td>".$producto['producto']."</td><td>".$producto['productos_vendidos']."</td></tr>";
+}
+echo "</table>";
+?>
+<script>
+    // Paso 5: Generar el gráfico
+    var ctx = document.getElementById('grafico').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($producto); ?>,
+            datasets: [{
+                label: 'Cantidad Vendida',
+                data: <?php echo json_encode($cantidades); ?>,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js" integrity="sha512-TJ7U6JRJx5IpyvvO9atNnBzwJIoZDaQnQhb0Wmw32Rj5BQHAmJG16WzaJbDns2Wk5VG6gMt4MytZApZG47rCdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
-
-
-
-
-
-
-    <br>
-    <center><h1>Bandeja de Entrada de Informes</h1></center>
 
 

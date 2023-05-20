@@ -30,7 +30,7 @@ require ('../includes/conexion.php')
             <span>Reportes</span>
           </span>
         </button>
-        <button >
+        <button type="button" id="estadisticas_link">
           <span>
             <i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i>
             <span>Estadisticas</span>
@@ -1158,6 +1158,7 @@ require ('../includes/conexion.php')
 
 
 <div id="reportes"></div>
+<div id="estadisticas"></div>
 
 
 

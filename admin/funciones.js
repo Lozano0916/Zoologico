@@ -529,3 +529,17 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function () {
+    $('#estadisticas_link').click(function () {
+        $('.opciones').hide();
+
+        $.ajax({
+            url: 'graficos/graficos.php',
+            success: function (data) {
+                $('#estadisticas').html(data);
+
+            }
+        });
+    });
+});

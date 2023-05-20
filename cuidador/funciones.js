@@ -75,3 +75,25 @@ $('#reporte_boton').click(function () {
         }
     })
 });
+$('#reporte_boton_medico').click(function () {
+    var recolectar = $('#for_reporte').serialize();
+
+    $.ajax({
+        url: 'funciones/informe/reporte_medico.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            alert("Reporte enviado correctamente");
+            $('#reportes_cuidador').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+
+            $('#nom_repor').val("");
+            $('#animal_re').val("");
+            $('#fecha_act').val("");
+            $('#contenido_repo').val("");
+            $('#animal_recinto').val("");
+        }
+    })
+});
