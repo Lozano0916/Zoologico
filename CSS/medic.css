@@ -163,6 +163,8 @@
 }
 
 
+/******Busqueda*****/
+
 
 /******menu para seleccionar tablas *******************/
 
@@ -220,7 +222,7 @@
 
 /* Estilos del foco del ícono */
 .tablas_menu:focus:after {
-    color: #FFF8DE;
+    color: transparent;
 }
 
 .opciones {
@@ -229,10 +231,73 @@
     width: 80%;
 }
 
+/*************tablas *********/
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+
+}
+
+.table {
+    border: solid 1px #1b492e;
+    margin-top: 5%;
+    table-layout: auto;
+
+}
+
+table {
+    color: black;
+    font-size: 14px;
+    table-layout: fixed;
+
+}
+
+thead {
+    background: #1b492e;
+    color: white;
+}
+
+th {
+    padding: 20px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+td {
+    padding: 15px;
+    border-bottom: solid 1px #1b492e;
+    text-align: center;
+}
 
 
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background: #FFF8DE;
+}
 
 
+/***********************/
+
+
+.boton {
+    background-color: #1b492e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background: #218249;
+}
 
 
 
