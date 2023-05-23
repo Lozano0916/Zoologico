@@ -6,6 +6,8 @@ document.getElementById('menu_des').addEventListener('click', function () {
     document.getElementById('reportes').style.display = 'none';
 });
 
+
+
 function editar_med(arreglo3) {
     cadena = arreglo3.split(',');
     alert(arreglo3);
@@ -136,8 +138,8 @@ $('#ocupar_medic_boton').click(function () {
         success: function (variable) {
             alert(variable);
             $('#recintos').load('medic.php #recintos');
-            $('#ocupar_recintos_medic').modal('hide');
             $('body').removeClass('modal-open');
+            $('#ocupar_recintos_medic').modal('hide');
             $('.modal-backdrop').hide();
         },
         error: function (xhr, status, error) {
@@ -153,7 +155,8 @@ $('#ocupar_medic_boton').click(function () {
 $(document).ready(function () {
     $('#reportes_link').click(function () {
         $('.opciones').hide();
-
+        
+        
         $.ajax({
             url: 'funciones/reportes/reportes.php',
             success: function (data) {
@@ -166,14 +169,14 @@ $(document).ready(function () {
 
 //////////////CITAS//////////////
 $(document).ready(function () {
-    $('#').click(function () {
+    $('#pendientes_cita_boton').click(function () {
         $('.opciones').hide();
 
         $.ajax({
-            url: 'funciones/reportes/reportes.php',
-            success: function (data) {
-                alert(data);
-                $('#reportes').html(data);
+            url: 'funciones/citas/citas_pendientes.html',
+            success: function (data1) {
+                $('#citas').html(data1);
+                console.log(data1);
             }
         });
     });

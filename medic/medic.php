@@ -8,7 +8,7 @@ require ('../includes/conexion.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/medic.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Medico</title>
 
 </head>
@@ -30,10 +30,10 @@ require ('../includes/conexion.php');
             <span>Reportes</span>
           </span>
         </button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#citas_animal">
+        <button>
           <span>
             <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i>
-            <span>Citas</span>
+            <a href="funciones/citas/citas_pendientes.php"><span>Citas</span></a>
           </span>
         </button>
         <button type="button" id="menu_des">
@@ -52,6 +52,8 @@ require ('../includes/conexion.php');
         </button>
       </nav>
     </aside>
+
+
 
 <div id="option1" class="opciones">
 <br><br>
@@ -181,6 +183,7 @@ require ('../includes/conexion.php');
           <div class="mb-3">
           <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
           <select class="form-control" id="n_recin_medic" name="n_recin_medic">
+            <option value=""></option>
             <?php
               // Consultar la lista de alimentos desde la base de datos
               $query = "SELECT id_animales, nombre FROM animales";
@@ -362,6 +365,84 @@ require ('../includes/conexion.php');
   </div>
 </div>
 
+<!-- Opcion de citas -->
+<div class="modal fade" id="citas_animal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Que desea realiza?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button type="button" type="button" data-bs-toggle="modal" data-bs-target="#agendar_cita_boton" class="boton">Agendar citas</button>
+        <button type="button"  class="boton" id="pendientes_cita_boton">Citas pedientes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Agendar cita -->
+<div class="modal fade" id="agendar_cita_boton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agendar cita</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="funciones/citas/agendar_cita.php" method="POST">
+          <br>
+          <div class="mb-3">
+            <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
+            <select class="form-control" id="n_agendar_medic" name="n_agendar_medic">
+              <?php
+                // Consultar la lista de alimentos desde la base de datos
+                $query = "SELECT id_animales, nombre FROM animales";
+                $result = $conn->query($query);
+
+                // Generar las opciones del menú desplegable
+                while ($row = $result->fetch_assoc()) {
+                  $alimentoId = $row['id_animales'];
+                  $alimentoNombre = $row['nombre'];
+                  echo "<option value='$alimentoId'>$alimentoNombre</option>";
+                }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Fecha de cita:</label>
+            <input type="date" class="form-control" id="agendar_fecha" name="agendar_fecha">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Razon:</label>
+            <textarea class="form-control" id="agendar_raz" name="agendar_raz" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="boton" id ="btn-agendar" name="submit">Agendar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Obtener el botón "Agendar" por su id
+  var btnAgendar = document.getElementById("btn-agendar");
+
+  // Agregar un evento de clic al botón
+  btnAgendar.addEventListener("click", function() {
+    // Cerrar el modal
+    var modal = document.getElementById("agendar_cita_boton");
+    var modalBootstrap = bootstrap.Modal.getInstance(modal);
+    modalBootstrap.hide();
+
+    // Mostrar el mensaje de alerta
+    alert("La cita ha sido agendada correctamente.");
+  });
+</script>
+
 <!-- Opcion de editar reducir medicamentos -->
 <div class="modal fade" id="utilizar_medicamentos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -390,53 +471,22 @@ require ('../includes/conexion.php');
         </div>
         <div class="mb-3">
           <label for="restar_cantidad" class="col-form-label">Cantidad:</label>
-          <input type="number" class="form-control" id="restar_cantidad" name="restar_cantidad">
+          <input type="number" class="form-control" id="restar_cantidad" name="restar_cantidad" />
         </div>
         <div class="modal-footer">
-        <button class="boton" onclick="restarCantidad()">Utilizar</button>
+          <button class="boton" onclick="restarCantidad()">Utilizar</button>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Opcion de citas -->
-<div class="modal fade" id="citas_animal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Utilizar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="id_medicamento" class="col-form-label">Medicamento:</label>
-          <select class="form-control" id="id_medicamento" name="id_medicamento">
-            <?php
-              // Consultar la lista de alimentos desde la base de datos
-              $query = "SELECT id_medicamento, nombre FROM medicamentos";
-              $result = $conn->query($query);
 
-              // Generar las opciones del menú desplegable
-              while ($row = $result->fetch_assoc()) {
-                $medicamentoId = $row['id_medicamento'];
-                $medicamentoNombre = $row['nombre'];
-                echo "<option value='$medicamentoId'>$medicamentoNombre</option>";
-              }
-            ?>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="restar_cantidad" class="col-form-label">Cantidad:</label>
-          <input type="number" class="form-control" id="restar_cantidad" name="restar_cantidad">
-        </div>
-        <div class="modal-footer">
-        <button class="boton" onclick="restarCantidad()">Utilizar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div id="reportes"></div>
+
+<div id="citas"></div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
