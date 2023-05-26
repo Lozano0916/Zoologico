@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/cuidador.css">
+    <link rel="icon" href="../images/frailecillo.png"" type=" image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Cuidador</title>
 </head>
@@ -20,12 +21,6 @@
         <img class="logo-img" src="../images/frailecillo.png"/>
       </header>
       <nav>
-        <button>
-          <span>
-            <i class="fa-solid fa-house" style="color: #ffffff;"></i>
-            <span>Inicio</span>
-          </span>
-        </button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#reportes_cuidador">
           <span> 
             <i class="fa-solid fa-file-contract" style="color: #ffffff;"></i>

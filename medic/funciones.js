@@ -10,7 +10,6 @@ document.getElementById('menu_des').addEventListener('click', function () {
 
 function editar_med(arreglo3) {
     cadena = arreglo3.split(',');
-    alert(arreglo3);
 
     $("#id_medic").val(cadena[0]);
     $("#nombre_medicamento").val(cadena[1]);
@@ -22,18 +21,17 @@ function editar_med(arreglo3) {
 }
 $('#editar_medica_boton').click(function () {
     var recolectar = $('#for_med_edit').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones/medicamentos/medicamentos_edit.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable) {
-            alert(variable);
             $('#medicamentos').load('medic.php #medicamentos');
             $('#editar_med').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -65,6 +63,7 @@ $('#agregar_medic_boton').click(function () {
             $('#fecha_vencimi_agg').val("");
             $('#fecha_compr_agg').val("");
             $('#lote_med_agg').val("");
+            alert("Medicamento agregado");
         }
     })
 });
@@ -89,6 +88,7 @@ $('#eliminar_medica_boton').click(function () {
             $('#eliminar_med').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 });
@@ -161,6 +161,7 @@ $(document).ready(function () {
             url: 'funciones/reportes/reportes.php',
             success: function (data) {
                 $('#reportes').html(data);
+                alert("Reporte enviado");
             }
         });
     });

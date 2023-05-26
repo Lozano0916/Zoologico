@@ -33,6 +33,7 @@ $('#editar_tienda').click(function() {
             $('#editar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -56,6 +57,7 @@ $('#agregar_tienda').click(function () {
             $('#agregar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Producto agregado");
 
             $('#nombre_gg').val("");
             $('#descripcion_gg').val("");
@@ -72,12 +74,10 @@ function eliminar(arreglo) {
 
     $("#id_eli").val(cadena[0]);
     $("#pro_eli").val(cadena[1]);
-    alert(cadena);
 }
 
 $('#eliminar_tienda').click(function () {
     var recolectar = $('#for_tienda_eli').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones_tienda/tienda_eliminar.php',
         type: 'POST',
@@ -88,6 +88,7 @@ $('#eliminar_tienda').click(function () {
             $('#eliminar').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 }); 
@@ -109,18 +110,17 @@ function editar_emp(arreglo2) {
 }
 $('#editar_empleados_boton').click(function () {
     var recolectar = $('#for_empleados_agg').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones_empleados/empleados_edit.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable) {
-            alert(variable);
             $('#empleados').load('admin.php #empleados');
             $('#editar_empleados').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -154,6 +154,7 @@ $('#agregar_empleados_boton').click(function () {
             $('#edad_empleado_agg').val("");
             $('#direccion_empleado_agg').val("");
             $('#contraseña_empleado_agg').val("");
+            alert("Empleado agregado");
         
         }
     })
@@ -165,7 +166,6 @@ function eliminar_emp(arreglo2) {
 
     $("#id_eli_emple").val(cadena[0]);
     $("#pro_eli_emple").val(cadena[2]);
-    alert(cadena);
 }
 $('#eliminar_empleados_boton').click(function () {
     var recolectar = $('#for_empleados_eli').serialize();
@@ -179,6 +179,7 @@ $('#eliminar_empleados_boton').click(function () {
             $('#eliminar_empleados').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha elminado correctamente");
         }
     })
 }); 
@@ -188,7 +189,6 @@ $('#eliminar_empleados_boton').click(function () {
 //Editar medicamentos
 function editar_med(arreglo3) {
     cadena = arreglo3.split(',');
-    alert(arreglo3);
 
     $("#id_medic").val(cadena[0]);
     $("#nombre_medicamento").val(cadena[1]);
@@ -200,18 +200,17 @@ function editar_med(arreglo3) {
 }
 $('#editar_medica_boton').click(function () {
     var recolectar = $('#for_med_edit').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones_medic/medicamentos_edit.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable) {
-            alert(variable);
             $('#medicamentos').load('admin.php #medicamentos');
             $('#editar_med').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -243,6 +242,7 @@ $('#agregar_medic_boton').click(function () {
             $('#fecha_vencimi_agg').val("");
             $('#fecha_compr_agg').val("");
             $('#lote_med_agg').val("");
+            alert("Medicamento agregado");
         }
     })
 });
@@ -253,7 +253,6 @@ function eliminar_med(arreglo3) {
 
     $("#id_eli_medic").val(cadena[0]);
     $("#eli_medica").val(cadena[1]);
-    alert(cadena);
 }
 $('#eliminar_medica_boton').click(function () {
     var recolectar = $('#for_medica_eli').serialize();
@@ -267,6 +266,7 @@ $('#eliminar_medica_boton').click(function () {
             $('#eliminar_med').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 });
@@ -276,7 +276,6 @@ $('#eliminar_medica_boton').click(function () {
 //Editar recintos
 function editar_rec(arreglo4) {
     cadena = arreglo4.split(',');
-    alert(arreglo4);
 
     $("#id_recin").val(cadena[0]);
     $("#tipo_recin").val(cadena[1]);
@@ -286,18 +285,17 @@ function editar_rec(arreglo4) {
 
 $('#editar_recin_boton').click(function () {
     var recolectar = $('#for_recin_edit').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones_recintos/recin_edit.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable) {
-            alert(variable);
             $('#recintos').load('admin.php #recintos');
             $('#editar_recintos').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -326,6 +324,7 @@ $('#agregar_recin_boton').click(function () {
             $('#tipo_recin_agg').val("");
             $('#n_recin_agg').val("");
             $('#estado_recin_agg').val("");
+            alert("Recinto agregado");
         }
     })
 });
@@ -349,6 +348,7 @@ $('#eliminar_recinto_boton').click(function () {
             $('#eliminar_recintos').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 });
@@ -358,7 +358,6 @@ $('#eliminar_recinto_boton').click(function () {
 //Editar animales
 function editar_ani(arreglo5) {
     cadena = arreglo5.split(',');
-    alert(cadena);
     $("#id_anim").val(cadena[0]);
     $("#nombre_anim").val(cadena[1]);
     $("#especie_anim").val(cadena[2]);
@@ -367,18 +366,17 @@ function editar_ani(arreglo5) {
 
 $('#editar_anim_boton').click(function () {
     var recolectar = $('#for_anim_edit').serialize();
-    alert(recolectar);
     $.ajax({
         url: 'funciones_animales/animales_edit.php',
         type: 'POST',
         data: recolectar,
 
         success: function (variable) {
-            alert(variable);
             $('#animales').load('admin.php #animales');
             $('#editar_animales').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -406,6 +404,7 @@ $('#agregar_anim_boton').click(function () {
             $('#nombre_anim_agg').val("");
             $('#especie_anim_agg').val("");
             $('#n_ejemplares_agg').val("");
+            alert("Animal agregado");
         }
     })
 });
@@ -428,6 +427,7 @@ $('#eliminar_animal_boton').click(function () {
             $('#eliminar_animales').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 });
@@ -459,6 +459,7 @@ $('#editar_alim_boton').click(function () {
             $('#editar_alimentos').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha editado correctamente");
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -489,6 +490,7 @@ $('#agregar_alim_boton').click(function () {
             $('#precio_alim_agg').val("");
             $('#existen_alim_agg').val("");
             $('#fecha_alim_agg').val("");
+            alert("Alimento agregado");
         }
     })
 });
@@ -511,6 +513,7 @@ $('#eliminar_alimento_boton').click(function () {
             $('#eliminar_alimentos').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').hide();
+            alert("Se ha eliminado correctamente");
         }
     })
 });

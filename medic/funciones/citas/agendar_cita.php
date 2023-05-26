@@ -2,37 +2,29 @@
 require('../../../includes/conexion.php');
 
 
-$cita = $_POST['cita'];
-$fecha = $_POST['fecha'];
-$color = $_POST['color'];
-$animal = $_POST['animal'];
-$razon = $_POST['razon'];
+$resultado = mysqli_query($conn, "SELECT * FROM agendar_citas");
 
-// Preparar la consulta SQL para insertar el evento en la base de datos
-$sql = "INSERT INTO agendar_citas (animal, fecha_cita, razon_cita, color  ) VALUES ('$animal', '$fecha', '$razon', '$color')";
+// Verificar si la consulta tuvo resultados
+if ($resultado) {
+    // Crear un arreglo para almacenar los resultados
+    $datos = array();
 
-// Ejecutar la consulta
-if ($conn->query($sql) === TRUE) {
-  echo 'Evento guardado exitosamente';
+    // Recorrer los resultados y agregarlos al arreglo
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+        $datos[] = $fila;
+    }
+
+    // Convertir el arreglo a formato JSON
+    $json = json_encode($datos);
+
+    // Mostrar el JSON
+    echo $json;
 } else {
-  echo 'Error al guardar el evento: ' . $conn->error;
-}
-$busqueda = "SELECT animal,fecha_cita,color FROM agendar_citas";
-$result = $conn->query($busqueda);
-
-$eventos = array();
-
-while ($row = $result->fetch_assoc()) {
-    $evento = array(
-        'title' => $row['animal'],
-        'start' => $row['fecha_cita'],
-        'color' => $row['color'],
-        // Agrega aquí otros campos que desees mostrar en el calendario
-    );
-    $eventos[] = $evento;
+    // Mostrar mensaje de error si la consulta falla
+    echo 'Error en la consulta: ' . mysqli_error($conn);
 }
 
-// Devolver los eventos como respuesta al Ajax
-echo json_encode($eventos);
+
+
 $conn->close();
 ?>
