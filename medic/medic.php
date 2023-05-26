@@ -31,12 +31,6 @@ require ('../includes/conexion.php');
             <a href="funciones/citas/citas_pendientes.php"><span>Citas</span></a>
           </span>
         </button>
-        <button id="#historial_animales">
-          <span>
-            <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i>
-            <span>historial</span>
-          </span>
-        </button>
         <button type="button" id="menu_des">
           <span>
             <i class="fa-solid fa-server" style="color: #ffffff;"></i>
@@ -366,48 +360,7 @@ require ('../includes/conexion.php');
   </div>
 </div>
 
-<div id="historial_animales" style="display:none;">
-<br><br>
-<center><h1>Animales</h1></center>
-<hr style="border: none; border-top: 1px solid black;">
-<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_animales" class="boton">Agregar</button>
-<div id="animales">
-	<div class="table">
-		<table>
-			<thead>
-			<tr>
-				<td>Id animales</td>
-				<td>Nombre</td>
-				<td>Especie</td>
-				<td>Numero ejemplares</td>
-        <td>Editar</td>
-        <td>Eliminar</td>
-			</tr>
-			</thead>
-			<tbody>
-				<?php 
-				$sql="SELECT * from animales";
-				$result=mysqli_query($conn,$sql);
-				while($mostrar=mysqli_fetch_array($result)){
 
-          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
-				 ?>
-				<tr>
-					<td><?php echo $mostrar['id_animales'] ?></td>
-					<td><?php echo $mostrar['nombre'] ?></td>
-					<td><?php echo $mostrar['especie'] ?></td>
-					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
-					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
-				</tr>
-				<?php 
-				}
-				 ?>
-			</tbody>
-		</table>
-	</div>
-  </div>
-</div>
 
 <script>
   // Obtener el botón "Agendar" por su id

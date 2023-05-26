@@ -8,7 +8,7 @@
 
 
     // Insertar los datos en la base de datos
-    $eliminar = "DELETE FROM animales WHERE id_animales ='$id' AND nombre ='$nombre'";
+    $eliminar = "DELETE FROM animal WHERE id ='$id' AND nombre ='$nombre'";
     $resultado= mysqli_query($conn,$eliminar);
     // Cerrar la conexión
     $conn->close();

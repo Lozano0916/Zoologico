@@ -172,12 +172,12 @@
             <option value=""></option>
             <?php
               // Consultar la lista de alimentos desde la base de datos
-              $query = "SELECT id_animales, nombre FROM animales";
+              $query = "SELECT id, nombre FROM animal";
               $result = $conn->query($query);
 
               // Generar las opciones del menú desplegable
               while ($row = $result->fetch_assoc()) {
-                $alimentoId = $row['id_animales'];
+                $alimentoId = $row['id'];
                 $alimentoNombre = $row['nombre'];
                 echo "<option value='$alimentoId'>$alimentoNombre</option>";
               }
@@ -244,12 +244,12 @@
           <select class="form-control" id="n_recin" name="n_recin">
             <?php
               // Consultar la lista de alimentos desde la base de datos
-              $query = "SELECT id_animales, nombre FROM animales";
+              $query = "SELECT id, nombre FROM animal";
               $result = $conn->query($query);
 
               // Generar las opciones del menú desplegable
               while ($row = $result->fetch_assoc()) {
-                $alimentoId = $row['id_animales'];
+                $alimentoId = $row['id'];
                 $alimentoNombre = $row['nombre'];
                 echo "<option value='$alimentoId'>$alimentoNombre</option>";
               }

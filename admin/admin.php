@@ -258,24 +258,30 @@ require ('../includes/conexion.php')
 				<td>Id animales</td>
 				<td>Nombre</td>
 				<td>Especie</td>
-				<td>Numero ejemplares</td>
+				<td>Sexo</td>
+        <td>Color</td>
+        <td>Edad</td>
+        <td>Estado</td>
         <td>Editar</td>
         <td>Eliminar</td>
 			</tr>
 			</thead>
 			<tbody>
 				<?php 
-				$sql="SELECT * from animales";
+				$sql="SELECT * from animal";
 				$result=mysqli_query($conn,$sql);
 				while($mostrar=mysqli_fetch_array($result)){
 
-          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
+          $arreglo5 = $mostrar['id'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['sexo'].','.$mostrar['color'].','.$mostrar['edad'].','.$mostrar['estado'];
 				 ?>
 				<tr>
-					<td><?php echo $mostrar['id_animales'] ?></td>
+					<td><?php echo $mostrar['id'] ?></td>
 					<td><?php echo $mostrar['nombre'] ?></td>
 					<td><?php echo $mostrar['especie'] ?></td>
-					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
+					<td><?php echo $mostrar['sexo'] ?></td>
+          <td><?php echo $mostrar['color'] ?></td>
+          <td><?php echo $mostrar['edad'] ?></td>
+          <td><?php echo $mostrar['estado'] ?></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
 					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
 				</tr>
@@ -504,9 +510,9 @@ require ('../includes/conexion.php')
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Tipo Empleado:</label>
             <select class="form-select form-control" name="tipo_empleado" id="tipo_empleado">
-              <option value="1">1.Administrador</option>
-              <option value="2">2.Medico</option>
-              <option value="3">3.Cuidador</option>
+              <option value="1">Administrador</option>
+              <option value="2">Medico</option>
+              <option value="3">Cuidador</option>
             </select>
           </div>
 
@@ -923,15 +929,12 @@ require ('../includes/conexion.php')
           </div>
 
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Especie:</label>
-            <input type="text" class="form-control" id="especie_anim" name="especie_anim">
+            <label for="recipient-name" class="col-form-label">Estado:</label>
+            <select class="form-select form-control" name="estado_anim" id="estado_anim">
+              <option value="Sano">Sano</option>
+              <option value="Enfermo">Enfermo</option>
+            </select>
           </div>
-
-		      <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
-            <input type="number" class="form-control" id="n_ejemplares" name="n_ejemplares">
-          </div>
-
         </form>
       </div>
       <div class="modal-footer">
@@ -961,12 +964,32 @@ require ('../includes/conexion.php')
             <label for="recipient-name" class="col-form-label">Especie:</label>
             <input type="text" class="form-control" id="especie_anim_agg" name="especie_anim_agg">
           </div>
-
-		      <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Numero de ejemplares:</label>
-            <input type="number" class="form-control" id="n_ejemplares_agg" name="n_ejemplares_agg">
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Sexo:</label>
+            <select class="form-select form-control" name="sexo_agg" id="sexo_agg">
+              <option value="Hembra">Hembra</option>
+              <option value="Macho">Macho</option>
+            </select>
           </div>
 
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Color:</label>
+            <input type="text" class="form-control" id="color_agg" name="color_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Edad:</label>
+            <input type="text" class="form-control" id="edad_agg" name="edad_agg">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Estado:</label>
+            <select class="form-select form-control" name="estado_agg" id="estado_agg">
+              <option value="Sano">Sano</option>
+              <option value="Enfermo">Enfermo</option>
+            </select>
+          </div>
         </form>
       </div>
       <div class="modal-footer">

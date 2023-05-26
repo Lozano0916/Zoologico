@@ -358,10 +358,10 @@ $('#eliminar_recinto_boton').click(function () {
 //Editar animales
 function editar_ani(arreglo5) {
     cadena = arreglo5.split(',');
+    alert(cadena);
     $("#id_anim").val(cadena[0]);
     $("#nombre_anim").val(cadena[1]);
-    $("#especie_anim").val(cadena[2]);
-    $("#n_ejemplares").val(cadena[3]);
+    $("#estado_anim").val(cadena[5]);
 }
 
 $('#editar_anim_boton').click(function () {

@@ -3,12 +3,10 @@
 
     $id = $_POST['id_anim'];
     $nombre=$_POST['nombre_anim'];
-    $especie=$_POST['especie_anim'];
-    $ejemplares=$_POST['n_ejemplares'];
+    $estado=$_POST['estado_anim'];
 
 
-    $editar = "UPDATE animales SET nombre='$nombre',especie='$especie',
-    numero_ejemplares='$ejemplares' WHERE id_animales='$id'";
+    $editar = "UPDATE animal SET nombre='$nombre',estado='$estado' WHERE id='$id'";
     
     $resultado = mysqli_query($conn,$editar);
     
