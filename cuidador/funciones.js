@@ -72,6 +72,7 @@ $('#reporte_boton').click(function () {
             $('#animal_re').val("");
             $('#fecha_act').val("");
             $('#contenido_repo').val("");
+            alert("Reporte enviado");
         }
     })
 });
@@ -94,6 +95,7 @@ $('#reporte_boton_medico').click(function () {
             $('#fecha_act').val("");
             $('#contenido_repo').val("");
             $('#animal_recinto').val("");
+            alert("Reporte enviado");
         }
     })
 });
