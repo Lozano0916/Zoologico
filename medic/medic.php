@@ -31,6 +31,12 @@ require ('../includes/conexion.php');
             <a href="funciones/citas/citas_pendientes.php"><span>Citas</span></a>
           </span>
         </button>
+        <button id="#historial_animales">
+          <span>
+            <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i>
+            <span>historial</span>
+          </span>
+        </button>
         <button type="button" id="menu_des">
           <span>
             <i class="fa-solid fa-server" style="color: #ffffff;"></i>
@@ -360,65 +366,46 @@ require ('../includes/conexion.php');
   </div>
 </div>
 
-<!-- Opcion de citas -->
-<div class="modal fade" id="citas_animal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Que desea realiza?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <button type="button" type="button" data-bs-toggle="modal" data-bs-target="#agendar_cita_boton" class="boton">Agendar citas</button>
-        <button type="button"  class="boton" id="pendientes_cita_boton">Citas pedientes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="historial_animales" style="display:none;">
+<br><br>
+<center><h1>Animales</h1></center>
+<hr style="border: none; border-top: 1px solid black;">
+<button type="button" data-bs-toggle="modal" data-bs-target="#agregar_animales" class="boton">Agregar</button>
+<div id="animales">
+	<div class="table">
+		<table>
+			<thead>
+			<tr>
+				<td>Id animales</td>
+				<td>Nombre</td>
+				<td>Especie</td>
+				<td>Numero ejemplares</td>
+        <td>Editar</td>
+        <td>Eliminar</td>
+			</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$sql="SELECT * from animales";
+				$result=mysqli_query($conn,$sql);
+				while($mostrar=mysqli_fetch_array($result)){
 
-<!-- Agendar cita -->
-<div class="modal fade" id="agendar_cita_boton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Agendar cita</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="funciones/citas/agendar_cita.php" method="POST">
-          <br>
-          <div class="mb-3">
-            <label for="n_recin" class="col-form-label">Seleccionar animal:</label>
-            <select class="form-control" id="n_agendar_medic" name="n_agendar_medic">
-              <?php
-                // Consultar la lista de alimentos desde la base de datos
-                $query = "SELECT id_animales, nombre FROM animales";
-                $result = $conn->query($query);
-
-                // Generar las opciones del menú desplegable
-                while ($row = $result->fetch_assoc()) {
-                  $alimentoId = $row['id_animales'];
-                  $alimentoNombre = $row['nombre'];
-                  echo "<option value='$alimentoId'>$alimentoNombre</option>";
-                }
-              ?>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Fecha de cita:</label>
-            <input type="date" class="form-control" id="agendar_fecha" name="agendar_fecha">
-          </div>
-
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Razon:</label>
-            <textarea class="form-control" id="agendar_raz" name="agendar_raz" cols="30" rows="10"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="boton" id ="btn-agendar" name="submit">Agendar</button>
-      </div>
-      </form>
-    </div>
+          $arreglo5 = $mostrar['id_animales'].','.$mostrar['nombre'].','.$mostrar['especie'].','.$mostrar['numero_ejemplares'];
+				 ?>
+				<tr>
+					<td><?php echo $mostrar['id_animales'] ?></td>
+					<td><?php echo $mostrar['nombre'] ?></td>
+					<td><?php echo $mostrar['especie'] ?></td>
+					<td><?php echo $mostrar['numero_ejemplares'] ?></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#editar_animales" class="boton" onclick="editar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button></td>
+					<td><button type="button" data-bs-toggle="modal" data-bs-target="#eliminar_animales" class="boton"onclick="eliminar_ani('<?php echo $arreglo5?>')"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button></button></td>
+				</tr>
+				<?php 
+				}
+				 ?>
+			</tbody>
+		</table>
+	</div>
   </div>
 </div>
 
