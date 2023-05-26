@@ -145,15 +145,7 @@ require('../../../includes/conexion.php');
                 
             </div>
             <div class="modal-footer">
-                <?php 
-                    $sql = "SELECT * FROM agendar_citas";
-                    $result = mysqli_query($conn, $sql);
-                    while($mostrar=mysqli_fetch_array($result)){
-                        $arreglo=$mostrar['id_agendar'].','.$mostrar['title'].','.$mostrar['animal'].','.$mostrar['start'].','.$mostrar['razon_cita'].','.$mostrar['color'];                        
-                    
-                    }
-                ?>
-                <button type="button" class="boton" data-bs-toggle="modal" data-bs-target="#editar_cita_model"id="btnEditarEvento" class="boton" onclick="editar_agenda_fun('<?php echo $arreglo?>')">Editar</button>
+                <button type="button" class="boton" data-bs-toggle="modal" data-bs-target="#historial"id="btnEditarEvento" class="boton">Empezar</button>
                 <button type="button" class="btn btn-danger" id="btnEliminarEvento"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             </div>
         </div>
@@ -219,66 +211,47 @@ require('../../../includes/conexion.php');
 
 
 <!-- Editar cita -->
-<div class="modal fade" id="editar_cita_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="historial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Editar cita</h5>
+                <h5 class="modal-title" id="">Cita</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="for_agenda_edit">
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Id:</label>
-                  <input type="text" class="form-control" id="id_agen_edit" name="id_agen_edit" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="fecha_agen" class="col-form-label">Titulo:</label>
-                    <input type="text" class="form-control" id="titulo_agen_edit" name="titulo_agen_edit" />
-                </div>
+                <form id="for_historial">
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Id del medico:</label>
+                      <input type="text" class="form-control" id="id_medic_historial" name="id_medic_historial">
+                    </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Id del animal:</label>
+                      <input type="text" class="form-control" id="id_animal_historial" name="id_animal_historial">
+                    </div>
 
-                <div class="mb-3">
-                    <label for="fecha_agen" class="col-form-label">Fecha:</label>
-                    <input type="date" class="form-control" id="fecha_agen_edit" name="fecha_agen_edit" />
-                </div>
+                    <div class="mb-3">
+                        <label for="fecha_agen" class="col-form-label">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha_agen_edit" name="fecha_agen_edit" />
+                    </div>
 
-                <div class="mb-3">
-                    <label for="color_agen" class="col-form-label">Color:</label>
-                    <input type="color" class="form-control" id="color_agen_edit" name="color_agen_edit" />
-                </div>
-
-                 <div class="mb-3">
-                  <label for="animal_agen" class="col-form-label">Seleccionar animal:</label>
-                  <select class="form-control" id="animal_agen_edit" name="animal_agen_edit">
-                    <?php
-                      // Consultar la lista de alimentos desde la base de datos
-                      $query = "SELECT id_animales, nombre FROM animales";
-                      $result = $conn->query($query);
-
-                      // Generar las opciones del menú desplegable
-                      while ($row = $result->fetch_assoc()) {
-                        $alimentoId = $row['id_animales'];
-                        $alimentoNombre = $row['nombre'];
-                        echo "<option value='$alimentoId'>$alimentoNombre</option>";
-                      }
-                    ?>
-                  </select>
-                </div>
-                
-
-                <div class="mb-3">
-                    <label for="razon_agen" class="col-form-label">Razon:</label>
-                    <textarea class="form-control" id="razon_agen_edit" name="razon_agen_edit" cols="30" rows="10"></textarea>
-                </div>
+                    <div class="mb-3">
+                        <label for="razon_agen" class="col-form-label">Observaciones:</label>
+                        <textarea class="form-control" id="obser_historial" name="obser_historial" cols="30" rows="10"></textarea>
+                    </div>
             </div>
             </form>
             <div class="modal-footer">
-                <button type="submit" id="aceptar_editar_cita" class="btn btn-primary" data-id="">Guardar</button>
+                <button type="button" id="aceptar_historial" class="boton" data-id="">Guardar</button>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+    var fechaAgenEdit = document.getElementById("fecha_agen_edit");
+    var fechaActual = new Date();
+    var formatoFecha = fechaActual.toISOString().split("T")[0];
+    fechaAgenEdit.value = formatoFecha;
+</script>
 
 <style>
     .container{
@@ -337,18 +310,28 @@ function eliminarEvento(idEvento) {
             console.log(error);
         }
     });
-},
-
-function editar_agenda_fun(arreglo) {
-    cadena = arreglo.split(',');
-    alert(cadena);
-    $("#id_agen_edit").val(cadena[0]);
-    $("#titulo_agen_edit").val(cadena[1]);
-    $("#animal_agen_edit").val(cadena[2]);
-    $("#fecha_agen_edit").val(cadena[3]);
-    $("#razon_agen_edit").val(cadena[4]);
-    $("#color_agen_edit").val(cadena[5]);
 }
+$('#aceptar_historial').click(function () {
+    var recolectar = $('#for_historial').serialize();
+
+    $.ajax({
+        url: 'historial.php',
+        type: 'POST',
+        data: recolectar,
+
+        success: function (variable1) {
+            $('#historial').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').hide();
+
+            $('#id_medic_historial').val("");
+            $('#id_animal_historial').val("");
+            $('#obser_historial').val("");
+            alert("Historial agregado");
+        }
+    })
+});
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
