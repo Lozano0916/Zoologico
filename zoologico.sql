@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 16-05-2023 a las 23:22:13
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.1.17
+-- Host: 127.0.0.1:3307
+-- Generation Time: May 26, 2023 at 06:37 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,60 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `zoologico`
+-- Database: `zoologico`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarProducto` (IN `nombre` VARCHAR(100), IN `precio` DECIMAL(10,2), IN `stock` INT)   BEGIN
+    INSERT INTO productos (nombre, precio, stock)
+    VALUES (nombre, precio, stock);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alimentos`
+-- Table structure for table `agendar_citas`
+--
+
+CREATE TABLE `agendar_citas` (
+  `id_agendar` int(11) NOT NULL,
+  `title` varchar(60) NOT NULL,
+  `animal` int(60) NOT NULL,
+  `start` date NOT NULL,
+  `razon_cita` text NOT NULL,
+  `color` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `agendar_citas`
+--
+
+INSERT INTO `agendar_citas` (`id_agendar`, `title`, `animal`, `start`, `razon_cita`, `color`) VALUES
+(3, 'cita con el leon', 1, '2023-05-24', 'El leon se desmayo mientras comia', '#f16565'),
+(5, 'cita con la cebra', 2, '2023-05-09', 'tienen un problema en la cintura', '#f16565'),
+(7, 'operacion cebra 2', 1, '2023-05-09', 'esta malo', '#af0d0d'),
+(8, 'operacion de pierna al leon', 1, '2023-05-12', 'se desmayo mientras corria', '#871717'),
+(9, 'revision leopardo', 1, '2023-05-18', 'El leon se cayo de un arbol ', '#d31d1d'),
+(10, 'Revision al leon', 1, '2023-05-26', 'esta malo del estomago', '#000000'),
+(11, 'Cebra lengua azul', 2, '2023-05-29', 'la cebra tiene un color azul extraño en la lengua ', '#3b308d'),
+(12, 'leon cola ', 1, '2023-05-29', 'La cola del leon tiene falta de pelaje', '#f50a0a'),
+(28, 'Control con el leon ', 1, '2023-05-30', 'Revisar el leon con dolor de estomago', '#000000'),
+(29, 'Control cebra lengua azul', 1, '2023-05-30', 'Contro de mejoria con la cebra de la lengua azul ', '#9447bd'),
+(31, 'Control de la cebra 2 operada', 1, '2023-05-31', 'Revision de mejoria con la cebra 2 ', '#d25151'),
+(32, 'Operacion de leon', 1, '2023-06-02', 'Operacion de estomago sacar tumor maligno', '#d34591'),
+(33, 'Chequeo cebra', 1, '2023-06-03', 'La cebra tiene un chequeo mensual', '#ba5a88'),
+(35, 'Chequeo a leones', 1, '2023-05-27', 'Chequeo mensual a los leones ', '#ba6969'),
+(36, 'Bersar a mi amor', 1, '2023-05-25', 'Besarte todo el dia', '#e22828');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alimentos`
 --
 
 CREATE TABLE `alimentos` (
@@ -38,19 +85,56 @@ CREATE TABLE `alimentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `alimentos`
+-- Dumping data for table `alimentos`
 --
 
 INSERT INTO `alimentos` (`id_alimento`, `nombre`, `tipo`, `provedor`, `precio`, `existencias`, `fecha_vencimiento`) VALUES
 (1, 'dog chow', 'carnes', 'carnitas S.A', '200000', '30', '2023-05-27'),
-(2, 'carne de rex', 'carnes', 'carnitas S.A', '230000', '100', '2023-05-22'),
+(2, 'carne de rex', 'carnes', 'carnitas S.A', '230000', '50', '2023-05-22'),
 (3, 'Bananas', 'Frutas', 'bananitas S.A', '120000', '60', '2023-05-18'),
-(4, 'pollo', 'carnes', 'multipollo', '190000', '90', '2023-05-19');
+(4, 'pollo', 'carnes', 'multipollo', '190000', '78', '2023-05-19');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `animales`
+-- Table structure for table `animal`
+--
+
+CREATE TABLE `animal` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `especie` varchar(100) DEFAULT NULL,
+  `sexo` varchar(10) DEFAULT NULL,
+  `color` varchar(50) DEFAULT NULL,
+  `edad` int(11) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `animal`
+--
+
+INSERT INTO `animal` (`id`, `nombre`, `especie`, `sexo`, `color`, `edad`, `estado`) VALUES
+(1, 'Max', 'Leon', 'Macho', 'Negro', 3, 'Sano'),
+(2, 'Elena', 'Elefante', 'Hembra', 'Gris', 3, 'Sano'),
+(3, 'Diego', 'Panda', 'Macho', 'Blanco y  negro', 6, 'Enfermo'),
+(4, 'Sid', 'Jirafa', 'Macho', 'Amarillo con manchas cafes', 8, 'Sano'),
+(5, 'Maria', 'Tigre', 'Hembra', 'Naranja', 9, 'Sano'),
+(6, 'Irina', 'Cocodrilo', 'Hembra', 'Gris', 9, 'Sano'),
+(7, 'Star', 'Tigre', 'Macho', 'Naranja', 3, 'Enfermo'),
+(8, 'Luna', 'Jirafa', 'Hembra', 'Naranja', 2, 'Sano'),
+(9, 'Rocky', 'Cocodrilo', 'Macho', 'Marrón', 5, 'Sano'),
+(10, 'Nala', 'Leon', 'Hembra', 'Naranja', 1, 'Sano'),
+(11, 'Diana', 'Cebra', 'Hembra', 'Blanco y negro', 8, 'Enfermo'),
+(12, 'Burbuja', 'Serpiente', 'No especif', 'Amarillo', 2, 'Sano'),
+(13, 'Luis', 'Gorila', 'Macho', 'Negro', 12, 'Sano'),
+(14, 'Gloria', 'Hipopótamo', 'Hembra', 'Gris', 10, 'Enfermo'),
+(15, 'Daniel', 'Tigre', 'Macho', 'Naranja y negro', 6, 'Sano');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animales`
 --
 
 CREATE TABLE `animales` (
@@ -61,7 +145,7 @@ CREATE TABLE `animales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `animales`
+-- Dumping data for table `animales`
 --
 
 INSERT INTO `animales` (`id_animales`, `nombre`, `especie`, `numero_ejemplares`) VALUES
@@ -71,7 +155,21 @@ INSERT INTO `animales` (`id_animales`, `nombre`, `especie`, `numero_ejemplares`)
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empleados`
+-- Table structure for table `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `empleados`
 --
 
 CREATE TABLE `empleados` (
@@ -87,7 +185,7 @@ CREATE TABLE `empleados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `empleados`
+-- Dumping data for table `empleados`
 --
 
 INSERT INTO `empleados` (`id_empleado`, `id_tipo_empleado`, `nombre`, `email`, `sexo`, `numero_telefonico`, `edad`, `direccion`, `contraseña`) VALUES
@@ -99,7 +197,7 @@ INSERT INTO `empleados` (`id_empleado`, `id_tipo_empleado`, `nombre`, `email`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medicamentos`
+-- Table structure for table `medicamentos`
 --
 
 CREATE TABLE `medicamentos` (
@@ -113,18 +211,19 @@ CREATE TABLE `medicamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `medicamentos`
+-- Dumping data for table `medicamentos`
 --
 
 INSERT INTO `medicamentos` (`id_medicamento`, `nombre`, `laboratorio`, `existencias`, `fecha_vencimiento`, `fecha_compra`, `lote`) VALUES
-(1, 'acetominofen', 'Laproff S.A', 30, '2023-05-25', '2025-05-14', 12061),
+(1, 'acetominofen', 'Laproff S.A', 40, '2023-05-25', '2025-05-14', 12061),
 (2, 'ibuprofeno', 'pescaditos S.A.', 46, '2024-06-12', '2023-05-13', 10832),
-(3, 'Apronax', 'paletitas S.A', 54, '2025-01-03', '2023-05-11', 33105);
+(3, 'Apronax', 'paletitas S.A', 54, '2025-01-03', '2023-05-11', 33105),
+(5, 'aspirina', 'lampin S.A', 38, '2024-06-11', '2023-05-19', 43128);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -137,7 +236,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id_producto`, `imagen`, `nombre`, `descripcion`, `precio`, `cantidad`) VALUES
@@ -153,7 +252,30 @@ INSERT INTO `productos` (`id_producto`, `imagen`, `nombre`, `descripcion`, `prec
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `recintos`
+-- Table structure for table `productos_ventas`
+--
+
+CREATE TABLE `productos_ventas` (
+  `id` int(11) NOT NULL,
+  `productos` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `productos_vendidos` int(11) NOT NULL,
+  `precio_unitario` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `productos_ventas`
+--
+
+INSERT INTO `productos_ventas` (`id`, `productos`, `fecha`, `productos_vendidos`, `precio_unitario`, `total`) VALUES
+(1, 2, '2023-05-18', 12, 12000, 144000),
+(2, 15, '2023-05-19', 9, 8000, 72000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recintos`
 --
 
 CREATE TABLE `recintos` (
@@ -164,12 +286,12 @@ CREATE TABLE `recintos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `recintos`
+-- Dumping data for table `recintos`
 --
 
 INSERT INTO `recintos` (`id_recintos`, `tipo`, `n_animales`, `estado`) VALUES
-(1, 'Jaula', 'leon', 'ocupado'),
-(2, 'Veterinaria', '0', 'libre'),
+(1, 'Jaula', '', 'libre'),
+(2, 'Veterinaria', '2', 'ocupado'),
 (3, 'Cuarto de baño', '0', 'libre'),
 (4, 'Farmacia', '0', 'ocupado'),
 (5, 'Despensa', '0', 'libre');
@@ -177,7 +299,51 @@ INSERT INTO `recintos` (`id_recintos`, `tipo`, `n_animales`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_empleado`
+-- Table structure for table `reportes_admin`
+--
+
+CREATE TABLE `reportes_admin` (
+  `id` int(11) NOT NULL,
+  `empleado` int(11) NOT NULL,
+  `animal` varchar(60) NOT NULL,
+  `lugar` varchar(60) NOT NULL,
+  `fecha` date NOT NULL,
+  `contenido` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reportes_admin`
+--
+
+INSERT INTO `reportes_admin` (`id`, `empleado`, `animal`, `lugar`, `fecha`, `contenido`) VALUES
+(3, 5, '1', '1', '2023-05-19', 'El leon daño uno de los accesorio del escenario');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reportes_medico`
+--
+
+CREATE TABLE `reportes_medico` (
+  `id` int(11) NOT NULL,
+  `empleado` int(11) NOT NULL,
+  `animal` varchar(60) NOT NULL,
+  `lugar` varchar(60) NOT NULL,
+  `fecha` date NOT NULL,
+  `contenido` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reportes_medico`
+--
+
+INSERT INTO `reportes_medico` (`id`, `empleado`, `animal`, `lugar`, `fecha`, `contenido`) VALUES
+(3, 5, '2', '', '2023-05-19', 'la cebra tiene un raspon en la parte derecha del lomo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tipo_empleado`
 --
 
 CREATE TABLE `tipo_empleado` (
@@ -186,7 +352,7 @@ CREATE TABLE `tipo_empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tipo_empleado`
+-- Dumping data for table `tipo_empleado`
 --
 
 INSERT INTO `tipo_empleado` (`id`, `tipo_empleado`) VALUES
@@ -197,7 +363,7 @@ INSERT INTO `tipo_empleado` (`id`, `tipo_empleado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_recinto`
+-- Table structure for table `tipo_recinto`
 --
 
 CREATE TABLE `tipo_recinto` (
@@ -206,7 +372,7 @@ CREATE TABLE `tipo_recinto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tipo_recinto`
+-- Dumping data for table `tipo_recinto`
 --
 
 INSERT INTO `tipo_recinto` (`id_recinto`, `tipo_recinto`) VALUES
@@ -217,120 +383,208 @@ INSERT INTO `tipo_recinto` (`id_recinto`, `tipo_recinto`) VALUES
 (5, 'despensa');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `alimentos`
+-- Indexes for table `agendar_citas`
+--
+ALTER TABLE `agendar_citas`
+  ADD PRIMARY KEY (`id_agendar`),
+  ADD KEY `animal_agenda` (`animal`);
+
+--
+-- Indexes for table `alimentos`
 --
 ALTER TABLE `alimentos`
   ADD PRIMARY KEY (`id_alimento`);
 
 --
--- Indices de la tabla `animales`
+-- Indexes for table `animal`
+--
+ALTER TABLE `animal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `animales`
 --
 ALTER TABLE `animales`
   ADD PRIMARY KEY (`id_animales`);
 
 --
--- Indices de la tabla `empleados`
+-- Indexes for table `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `empleados`
 --
 ALTER TABLE `empleados`
   ADD PRIMARY KEY (`id_empleado`),
   ADD KEY `empleado` (`id_tipo_empleado`);
 
 --
--- Indices de la tabla `medicamentos`
+-- Indexes for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
   ADD PRIMARY KEY (`id_medicamento`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indices de la tabla `recintos`
+-- Indexes for table `productos_ventas`
+--
+ALTER TABLE `productos_ventas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `producto_venta` (`productos`);
+
+--
+-- Indexes for table `recintos`
 --
 ALTER TABLE `recintos`
   ADD PRIMARY KEY (`id_recintos`),
   ADD KEY `recintos` (`tipo`);
 
 --
--- Indices de la tabla `tipo_empleado`
+-- Indexes for table `reportes_admin`
+--
+ALTER TABLE `reportes_admin`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reporte` (`empleado`);
+
+--
+-- Indexes for table `reportes_medico`
+--
+ALTER TABLE `reportes_medico`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reporte` (`empleado`);
+
+--
+-- Indexes for table `tipo_empleado`
 --
 ALTER TABLE `tipo_empleado`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipo_recinto`
+-- Indexes for table `tipo_recinto`
 --
 ALTER TABLE `tipo_recinto`
   ADD PRIMARY KEY (`id_recinto`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `alimentos`
+-- AUTO_INCREMENT for table `agendar_citas`
+--
+ALTER TABLE `agendar_citas`
+  MODIFY `id_agendar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `alimentos`
 --
 ALTER TABLE `alimentos`
   MODIFY `id_alimento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `animales`
+-- AUTO_INCREMENT for table `animales`
 --
 ALTER TABLE `animales`
   MODIFY `id_animales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `empleados`
+-- AUTO_INCREMENT for table `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `empleados`
 --
 ALTER TABLE `empleados`
   MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `medicamentos`
+-- AUTO_INCREMENT for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
-  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `recintos`
+-- AUTO_INCREMENT for table `productos_ventas`
+--
+ALTER TABLE `productos_ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `recintos`
 --
 ALTER TABLE `recintos`
   MODIFY `id_recintos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_empleado`
+-- AUTO_INCREMENT for table `reportes_admin`
+--
+ALTER TABLE `reportes_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `reportes_medico`
+--
+ALTER TABLE `reportes_medico`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tipo_empleado`
 --
 ALTER TABLE `tipo_empleado`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_recinto`
+-- AUTO_INCREMENT for table `tipo_recinto`
 --
 ALTER TABLE `tipo_recinto`
   MODIFY `id_recinto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `empleados`
+-- Constraints for table `agendar_citas`
+--
+ALTER TABLE `agendar_citas`
+  ADD CONSTRAINT `animal_agenda` FOREIGN KEY (`animal`) REFERENCES `animales` (`id_animales`);
+
+--
+-- Constraints for table `empleados`
 --
 ALTER TABLE `empleados`
   ADD CONSTRAINT `empleado` FOREIGN KEY (`id_tipo_empleado`) REFERENCES `tipo_empleado` (`id`);
+
+--
+-- Constraints for table `productos_ventas`
+--
+ALTER TABLE `productos_ventas`
+  ADD CONSTRAINT `producto_venta` FOREIGN KEY (`productos`) REFERENCES `productos` (`id_producto`);
+
+--
+-- Constraints for table `reportes_admin`
+--
+ALTER TABLE `reportes_admin`
+  ADD CONSTRAINT `reporte` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`id_empleado`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
