@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (isset($_POST['producto_id']) && isset($_POST['cantidad'])) {
-    $producto_id = $_POST['producto_id'];
+if (isset($_POST['id_producto']) && isset($_POST['cantidad'])) {
+    $id_producto = $_POST['id_producto'];
     $cantidad = $_POST['cantidad'];
 
     // Agregar el producto al carrito
@@ -13,7 +13,7 @@ if (isset($_POST['producto_id']) && isset($_POST['cantidad'])) {
     // Verificar si el producto ya está en el carrito
     $producto_en_carrito = false;
     foreach ($_SESSION['carrito'] as $producto) {
-        if ($producto['producto_id'] == $producto_id) {
+        if ($producto['id_producto'] == $id_producto) {
             $producto_en_carrito = true;
             break;
         }
@@ -22,7 +22,7 @@ if (isset($_POST['producto_id']) && isset($_POST['cantidad'])) {
     // Si el producto no está en el carrito, agregarlo
     if (!$producto_en_carrito) {
         $_SESSION['carrito'][] = array(
-            'producto_id' => $producto_id,
+            'id_producto' => $id_producto,
             'cantidad' => $cantidad
         );
     }

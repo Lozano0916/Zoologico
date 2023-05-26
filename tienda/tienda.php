@@ -71,7 +71,7 @@ $resultado = $conn->query($sql);
                         </div>
                         <br>
                         <form action="carrito.php" method="post">
-                            <input type="hidden" name="producto_id" value="<?php echo $row['id_producto']; ?>">
+                            <input type="hidden" name="id_producto" value="<?php echo $row['id_producto']; ?>">
                             <input type="hidden" name="cantidad" value="1">
                             <button class="boton agregar-carrito" type="submit">Agregar al carrito</button>
                         </form>
@@ -81,7 +81,7 @@ $resultado = $conn->query($sql);
                 <p>No se encontraron productos</p>
             <?php endif; ?>
         </div>
-
+        
         <footer class="bg-dark text-white py-4">
             <div class="container">
                 <div class="row">
@@ -152,7 +152,6 @@ $resultado = $conn->query($sql);
 // Cerrar la conexión
 $conn->close();
 ?>
-
 
 
 
